@@ -20,10 +20,15 @@ A réaliser que la première fois.
 ### Modification et envoie
 
 -Recupère la dernière version du projet avant de travailler: 
+
             _git pull_
+            
 -Fais les modif voulues et sauvegarde
+
 -Fais :     _git add . _                                                              (le point pour dire que tu voudras tout renvoyer)
+
 -Fais :     _git commit -m "iciTuEcrisLaModifApportéePourNePasS'YPerdre" _           (tu confirmes l'envoie)
+
 -Fais :     _git push --set-upstream origin NomBrancheOùEnvoi  _                      (vrai envoie sur serveur)
 
 La  prochaine fois que tu travailles, tu peux refaire le git pull dans ton dossier projet (dans le terminal) pour bien récup les MàJ.
