@@ -6,8 +6,10 @@ Le projet de l'UE mise à niveau en informatique 1 (algorithmique).
 
 A réaliser que la première fois.
 
- -Aller dans le dossier où le projet sera mis dans le terminal.
- -_git clone mettreIciURL_
+ -Aller dans le dossier où le projet sera mis dans le terminal, puis :
+ 
+      _git clone mettreIciURL_
+ 
  -il demande ton nom utilisateur puis un password. Obtention du password:
                                                    - setting du compte github (à droite, icone avatar)
                                                     - devellopeur setting 
@@ -25,11 +27,18 @@ A réaliser que la première fois.
             
 -Fais les modif voulues et sauvegarde
 
--Fais :     _git add . _                                                              (le point pour dire que tu voudras tout renvoyer)
+-Fais : (le point pour dire que tu voudras tout renvoyer)
 
--Fais :     _git commit -m "iciTuEcrisLaModifApportéePourNePasS'YPerdre" _           (tu confirmes l'envoie)
+            _git add . _               
+ 
+-Fais : (tu confirmes l'envoie)
 
--Fais :     _git push --set-upstream origin NomBrancheOùEnvoi  _                      (vrai envoie sur serveur)
+            _git commit -m "iciTuEcrisLaModifApportéePourNePasS'YPerdre" _      
+
+-Fais : (vrai envoie sur serveur)
+
+           _git push --set-upstream origin NomBrancheOùEnvoi  _                      
+
 
 La  prochaine fois que tu travailles, tu peux refaire le git pull dans ton dossier projet (dans le terminal) pour bien récup les MàJ.
 
