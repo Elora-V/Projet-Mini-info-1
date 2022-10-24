@@ -54,3 +54,15 @@ Chacun fais les 'git push' (voir plus haut) en indiquant son nom de branche.
 Quand on veut mettre en commun nos deux branche (nos deux travaux) on clique sur petit icone avec fleche.
 Si il y a des fichiers en commun dans nos deux branches il va y avoir 'conflit' (quelle est la version qu'on garde). Il faut donc résoudre les conflits dans le fichier concerné.
 Quand il n'y a plus de conflit, les documents des deux branches sont à nouveau identique, on peut continuer notre travaille sur notre branche jusqu'à la prochaine fois qu'on fais une mise en commun.
+
+### enregistrer mot de passe
+
+Pour oublier l'ancien: 
+
+git config credential.helper ""
+
+Pour enregistrer le nouveau:
+
+git config credential.helper store
+
+faire un git pull par exemple, tu rentres tes infos et elles seront retenues.
