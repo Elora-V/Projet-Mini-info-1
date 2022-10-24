@@ -1,8 +1,10 @@
 # Projet-Mini-info-1
+
+
 Le projet de l'UE mise à niveau en informatique 1 (algorithmique).
 
 ## Tuto github
-### Récupération de ce dossier sur ton ordi
+### Récupération de ce dossier sur ton (truc inutile)
 
 A réaliser que la première fois.
 
