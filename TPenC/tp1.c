@@ -3,7 +3,9 @@
 #include <math.h>
 
 
-/* fonction affiche bonjour */
+
+/* affiche bonjour */
+
 void afficher(){
 	printf("Hello !\n");
 }
