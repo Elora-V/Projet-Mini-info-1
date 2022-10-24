@@ -23,10 +23,10 @@ A réaliser que la première fois.
 
 ### Modification et envoie
 
-- sur github, faire merge avec la main (de la main vers nous) pour que notre branche de travail soit identique à la branche final (la branche main)
+- jsp si nécessaire :sur github, faire merge avec la main (de la main vers nous) pour que notre branche de travail soit identique à la branche final (la branche main)
 
 
--Recupère la dernière version du projet sur notre ordi (en local) avant de travailler: 
+- Recupère la dernière version du projet sur notre ordi (en local) avant de travailler: 
 
             git pull
             
@@ -34,17 +34,17 @@ A réaliser que la première fois.
 
             git checkout nombranche
             
--Fais les modif voulues et sauvegarde
+- Fais les modif voulues et sauvegarde
 
--Fais : (le point pour dire que tu voudras tout renvoyer)
+- Fais : (le point pour dire que tu voudras tout renvoyer)
 
             git add .               
  
--Fais : (tu confirmes l'envoie)
+- Fais : (tu confirmes l'envoie)
 
             git commit -m "iciTuEcrisLaModifApportéePourNePasS'YPerdre"       
 
--Fais : (vrai envoie sur serveur)
+- Fais : (vrai envoie sur serveur)
 
            git push --set-upstream origin NomBranche                      
 
