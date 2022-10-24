@@ -4,7 +4,7 @@
 Le projet de l'UE mise à niveau en informatique 1 (algorithmique).
 
 ## Tuto github
-### Récupération de ce dossier sur ton (truc inutile)
+### Récupération de ce dossier sur ton ordi
 
 A réaliser que la première fois.
 
