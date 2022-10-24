@@ -6,13 +6,13 @@ Le projet de l'UE mise à niveau en informatique 1 (algorithmique).
 ## Tuto github
 ### Récupération de ce dossier sur ton ordi
 
-A réaliser que la première fois.
+A réaliser que la première fois:
 
- -Aller dans le dossier où le projet sera mis dans le terminal, puis :
+ - Aller dans le dossier où le projet sera mis dans le terminal, puis :
  
      git clone mettreIciURL
  
- -il demande ton nom utilisateur puis un password. Obtention du password:
+ - il demande ton nom utilisateur puis un password. Obtention du password:
                                                    - setting du compte github (à droite, icone avatar)
                                                     - devellopeur setting 
                                                     - generate new token
