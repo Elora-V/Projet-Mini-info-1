@@ -27,7 +27,7 @@ A réaliser que la première fois.
             
 - Se place sur la branche de travail:
 
-            git checkhout nombranche
+            git checkout nombranche
             
 -Fais les modif voulues et sauvegarde
 
