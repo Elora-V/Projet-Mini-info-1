@@ -59,10 +59,10 @@ Quand il n'y a plus de conflit, les documents des deux branches sont à nouveau 
 
 Pour oublier l'ancien: 
 
-git config credential.helper ""
+  git config credential.helper ""
 
 Pour enregistrer le nouveau:
 
-git config credential.helper store
+  git config credential.helper store
 
 faire un git pull par exemple, tu rentres tes infos et elles seront retenues.
