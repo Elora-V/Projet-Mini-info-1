@@ -51,9 +51,11 @@ La  prochaine fois que tu travailles, tu peux refaire le git pull dans ton dossi
   On peut créer plusieurs branches sur github, de base il y a la main. Cela permet de travailler à plusieurs, chacun sur une branche (pour éviter des   problèmes entre ma version de code et ta version).
 
 Chacun fais les 'git push' (voir plus haut) en indiquant son nom de branche.
-Quand on veut mettre en commun nos deux branche (nos deux travaux) on clique sur petit icone avec fleche.
-Si il y a des fichiers en commun dans nos deux branches il va y avoir 'conflit' (quelle est la version qu'on garde). Il faut donc résoudre les conflits dans le fichier concerné.
-Quand il n'y a plus de conflit, les documents des deux branches sont à nouveau identique, on peut continuer notre travaille sur notre branche jusqu'à la prochaine fois qu'on fais une mise en commun.
+Quand on veut mettre en commun nos deux branche (nos deux travaux) on clique sur petit icone avec fleche. Cad on va comparer notre branche avec la branche main.
+Si il y a des fichiers en commun dans les 2 branches il va y avoir 'conflit' (quelle est la version qu'on garde). Il faut donc résoudre les conflits dans le fichier concerné.
+Quand il n'y a plus de conflit, les modifs de la branche sont mise sur main. 
+On fait ça pr chaque branche, main a donc ensuite toutes les modifs aportées par les branches : main est la version 'finale'.
+Mais maintenant, on veut que nos branches à nous soient identiques à main (car ma branche et ta branche sont inégale actuellement). On merge alors dans l'autre sens, de main vers ma branche et du main vers ta branche. 
 
 ### enregistrer mot de passe
 
