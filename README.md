@@ -23,7 +23,10 @@ A réaliser que la première fois.
 
 ### Modification et envoie
 
--Recupère la dernière version du projet avant de travailler: 
+- sur github, faire merge avec la main (de la main vers nous) pour que notre branche de travail soit identique à la branche final (la branche main)
+
+
+-Recupère la dernière version du projet sur notre ordi (en local) avant de travailler: 
 
             git pull
             
@@ -43,10 +46,10 @@ A réaliser que la première fois.
 
 -Fais : (vrai envoie sur serveur)
 
-           git push --set-upstream origin NomBrancheOùEnvoi                       
+           git push --set-upstream origin NomBranche                      
 
 
-La  prochaine fois que tu travailles, tu peux refaire le git pull dans ton dossier projet (dans le terminal) pour bien récup les MàJ.
+La  prochaine fois que tu travailles, tu refait le merge (si modif de main) et le git pull dans ton dossier projet (dans le terminal) pour bien récup les MàJ.
 
 ### Branches
 
