@@ -25,6 +25,10 @@ A réaliser que la première fois.
 
             git pull
             
+- Se place sur la branche de travail:
+
+            git checkhout nombranche
+            
 -Fais les modif voulues et sauvegarde
 
 -Fais : (le point pour dire que tu voudras tout renvoyer)
