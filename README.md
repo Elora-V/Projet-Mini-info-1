@@ -6,13 +6,13 @@ Le projet de l'UE mise à niveau en informatique 1 (algorithmique).
 ## Tuto github
 ### Récupération de ce dossier sur ton ordi
 
-A réaliser que la première fois.
+A réaliser que la première fois:
 
- -Aller dans le dossier où le projet sera mis dans le terminal, puis :
+ - Aller dans le dossier où le projet sera mis dans le terminal, puis :
  
      git clone mettreIciURL
  
- -il demande ton nom utilisateur puis un password. Obtention du password:
+ - il demande ton nom utilisateur puis un password. Obtention du password:
                                                    - setting du compte github (à droite, icone avatar)
                                                     - devellopeur setting 
                                                     - generate new token
@@ -23,10 +23,10 @@ A réaliser que la première fois.
 
 ### Modification et envoie
 
-- sur github, faire merge avec la main (de la main vers nous) pour que notre branche de travail soit identique à la branche final (la branche main)
+- jsp si nécessaire :sur github, faire merge avec la main (de la main vers nous) pour que notre branche de travail soit identique à la branche final (la branche main)
 
 
--Recupère la dernière version du projet sur notre ordi (en local) avant de travailler: 
+- Recupère la dernière version du projet sur notre ordi (en local) avant de travailler: 
 
             git pull
             
@@ -34,17 +34,17 @@ A réaliser que la première fois.
 
             git checkout nombranche
             
--Fais les modif voulues et sauvegarde
+- Fais les modif voulues et sauvegarde
 
--Fais : (le point pour dire que tu voudras tout renvoyer)
+- Fais : (le point pour dire que tu voudras tout renvoyer)
 
             git add .               
  
--Fais : (tu confirmes l'envoie)
+- Fais : (tu confirmes l'envoie)
 
             git commit -m "iciTuEcrisLaModifApportéePourNePasS'YPerdre"       
 
--Fais : (vrai envoie sur serveur)
+- Fais : (vrai envoie sur serveur)
 
            git push --set-upstream origin NomBranche                      
 
