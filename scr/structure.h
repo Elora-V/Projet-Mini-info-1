@@ -17,6 +17,7 @@ typedef struct {
 		 int AMange;
 		 int vie;
 		 char mvt;
+		 char dessin_mvt;
 		 
 		 } puceron;
 		 
