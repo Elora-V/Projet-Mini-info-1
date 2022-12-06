@@ -16,7 +16,8 @@ typedef struct {
 		 coord position;
 		 int AMange;
 		 int vie;
-		 char mvt;
+		 int mvt;
+		 char dessin_mvt;
 		 
 		 } puceron;
 		 
