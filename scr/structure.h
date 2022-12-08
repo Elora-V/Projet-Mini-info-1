@@ -15,10 +15,17 @@ typedef struct {
 		
 typedef struct {
 		 coord position;
+<<<<<<< HEAD
 		 int AMange;  //nombre de jours consécutifs où le pucerion a mangé
 		 int vie;     // vie du puceron, elle diminue de 1 à chaque tours
 		 int mvt;     // numéro de 0 à 7 correspondant à une direction (voir schéma rendu écrit)
 		 char Dessinmvt; //le caractère à dessiner
+=======
+		 int AMange;
+		 int vie;
+		 int mvt;
+		 char dessin_mvt;
+>>>>>>> 1a3da6edad438daa8b0418bc236a3deb7c0db25d
 		 
 		 } puceron;
 		 
