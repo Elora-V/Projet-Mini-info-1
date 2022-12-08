@@ -1,4 +1,4 @@
-#include "structure.h"
+//faire truc pour pas recup en double les .h
 #include "fonctionBase.h"
 
 #include "initialisation.h"
