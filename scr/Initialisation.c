@@ -1,4 +1,7 @@
-##include "structure.h"
+#include "structure.h"
+#include "fonctionBase.h"
+
+#include "initialisation.h"
 
 //initialiser une tomate mure
 void IniTomates(tomate*tomate){
@@ -26,7 +29,7 @@ void IniPuceron(puceron*puceron){
 	(*puceron).mvt=RandMvt();
 	}
 
-//mouvement du puceron définit aléatoirement
+//mouvement du puceron définit aléatoirement            //A CHANGER, pour le moment jsp encore comment, dc laisse comme ça
 char RandMvt(){
 	int mvtNb=rand()%4
 	char mvt;
@@ -41,25 +44,23 @@ char RandMvt(){
 		}
 	else if(mvtNb==3){
 		mvt="v";
-		}                                //A CHANGER
+		}                               
 		return mvt;
 }
+
+
+
 //srand( time( NULL ) );
 
-//
+
+
+
 void RandPosPuc(coord*position){
 	(*position).x=rand()%N;
 	(*position).y=rand()%N;
 	}
 	
-/*void IniPotagerPuceron(potager*potager){
-		for(int i=0;i<N;i++){
-		for(int j=0;i<N;i++){
-				(*potager).Puceron[i][j]=NULL;
-		}
-	}
-}
-*/
+
 
 void RemplissagePotagerPuceron(potager*potager){
 	int flag;
@@ -77,6 +78,7 @@ void RemplissagePotagerPuceron(potager*potager){
 	}
 }
 
+		
 		
 
 
