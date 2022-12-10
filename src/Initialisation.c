@@ -1,20 +1,22 @@
 #include "structure.h"
 #include "fonctionBase.h"
+#include "Initialisation.h"
 
-#include "initialisation.h"
 
 //initialiser une tomate mure
 void IniTomates(tomate*tomate){
-	(*tomate).maturite="O";
+	(*tomate).Maturite='O';
 	(*tomate).JRepousse=5;
 }
 
 //initialiser le potager tomate
 void IniPotagerTomate(potager*potager){
+	tomate tomate;   	//declaration d'une tomate
+	IniTomates(&tomate);	//on lui initie ses valeurs
+	//on remplit le champ
 	for(int i=0;i<N;i++){
-		for(int j=0;i<N;i++){
-			tomate tomate;
-				(*potager).Tomate[i][j]=IniTomates(&tomate);
+		for(int j=0;j<N;j++){
+			(*potager).Tomate[i][j]=tomate; //on la plante dans sa case 
 		}
 	}
 }
@@ -22,15 +24,21 @@ void IniPotagerTomate(potager*potager){
 //initialisation d'un puceron
 void IniPuceron(puceron*puceron){
 	coord position;
+	int random= rand()%8;
 	RandPosPuc(&position);
-	(*puceron).coord=position;
+	(*puceron).Position=position;
 	(*puceron).AMange=0;
-	(*puceron).vie=10;
-	(*puceron).mvt=RandMvt();
-	}
+	(*puceron).Vie=10;
+	(*puceron).Mvt=random;
+	(*puceron).DessinMvt='<'; //a changer, mis ca pour test
+}
+
+
+
+
 
 //mouvement du puceron définit aléatoirement            //A CHANGER, pour le moment jsp encore comment, dc laisse comme ça
-char RandMvt(){
+/*char RandMvt(){
 	int mvtNb=rand()%4
 	char mvt;
 	if (mvtNb==0){
@@ -47,16 +55,12 @@ char RandMvt(){
 		}                               
 		return mvt;
 }
-
-
-
-//srand( time( NULL ) );
-
+*/
 
 
 
 void RandPosPuc(coord*position){
-	(*position).x=rand()%N;
+	(*position).x= rand()%N;
 	(*position).y=rand()%N;
 	}
 	
@@ -64,21 +68,22 @@ void RandPosPuc(coord*position){
 
 void RemplissagePotagerPuceron(potager*potager){
 	int flag;
-	(*potager).NbPuceronVie=0;
+	(*potager).NbPuceronVie=0;      //initie le nombre de puceron dans le champ à 0
+	puceron P;			//declaration d'un puceron
+	
+	//on veut mettre NbPuceron dans le champ:
 	for(int i=0;i<NbPuceron;i++){
-		puceron P;
 		do{
-			IniPuceron(&P);
-			flag=VerifPasPuceron(P.position,*potager);
+			IniPuceron(&P);   //initie le puceron
+			flag=VerifPasPuceron(P.Position,potager); //regarde si un puceron est déjà sur cette case
 		}while(!flag);
-		int x=P.position.x;
-		int y=P.position.y;
-		(*potager).EnsPuceron[i]=P;
+		//si la case est libre, on met le puceron :
+		(*potager).EnsPuceron[i]=P;		
 		(*potager).NbPuceronVie++;
 	}
 }
 
-		
+	
 		
 
 
