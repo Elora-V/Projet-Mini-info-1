@@ -4,16 +4,11 @@
 #include "structure.h"
 
 
-//a faire
+void EchangeTabCaseMvt( caseMvt tab[] ,int indice1 , int indice2 );
 
-void testfonctionBase();
+int VerifSiTomate(coord position, potager *potager);
 
-/*
-void EchangeTabCaseMvt( caseMvt tab[] , indice1 , indice2 );
+int VerifPasPuceron(coord position ,potager *potager);
 
-int VerifSiTomate(coord position, potager potager);
-
-int VerifPasPuceron(coord position ,potager potager);
-*/
 
 #endif

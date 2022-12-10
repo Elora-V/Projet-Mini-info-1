@@ -6,19 +6,20 @@
 #include "SimulationTour.h"
 
 int main(){
-
-	printf("\n");
-	testfonctionBase();
-	printf("\n");
-	testInitialisation();
-	printf("\n");
-	testListeCaseFiltre();
-	printf("\n");
-	testAffichage();
-	printf("\n");
-	testSimulationTour();
-	printf("\n");
-
+	
+	srand( time( NULL ) );
+	//initialisation
+	
+	potager potager; //declaration du potager
+	IniPotagerTomate(&potager); //remplissage de tomate mure
+	RemplissagePotagerPuceron(&potager); //remplissage de puceron
+	printf( "\nEtat initial du potager : il y a %d pucerons. \n",potager.NbPuceronVie);
+	affichePotager(&potager); // on affiche le potager
+	
+	
+	
+	
+	
 	return 0;
 
 }

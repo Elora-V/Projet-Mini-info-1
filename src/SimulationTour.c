@@ -5,8 +5,4 @@
 
 //A faire
 
-void testSimulationTour(){
-
-	printf("je suis dans simulation");
-}
 

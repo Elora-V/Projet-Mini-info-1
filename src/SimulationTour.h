@@ -5,6 +5,6 @@
 
 
 //a faire
-void testSimulationTour();
+
 
 #endif

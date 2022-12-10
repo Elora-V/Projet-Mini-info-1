@@ -3,12 +3,7 @@
 #include "ListeCaseFiltre.h"
 
 
-void testListeCaseFiltre(){
 
-	printf("je suis dans liste case");
-}
-
-/*
 int listaNCase(coord position , int n , caseMvt tab[]){ 
 	
 	//initialisation et/ou déclarations des variables
@@ -25,17 +20,17 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	i=(x-n+N)%N;
 	j=(y-n+N)%N;
 	for (int compte=0; compte < longueurLigne ; compte ++ ){
-		tab[cases].position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
+		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n) {
-			tab[cases].mvt= 0; //on va en diagonale haut gauche
+			tab[cases].Mvt= 0; //on va en diagonale haut gauche
 		}
 		else if (compte == n) {
-			tab[cases].mvt= 1; //on va en haut
+			tab[cases].Mvt= 1; //on va en haut
 		}
 		else if (compte > n) {
-			tab[cases].mvt= 2; //on va en diagonale haut droite
+			tab[cases].Mvt= 2; //on va en diagonale haut droite
 		}
 		i=(i+1)%N; //change la valeur de l'axe des abscisses
 		cases++;   // change la prochaine case à remplir
@@ -46,17 +41,17 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	i=(x-n+N)%N;
 	j=(y+n+N)%N;
 	for (int compte=0; compte < longueurLigne ; compte ++ ){  
-		tab[cases].position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
+		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n) {
-			tab[cases].mvt= 5; //on va en diagonale bas gauche
+			tab[cases].Mvt= 5; //on va en diagonale bas gauche
 		}
 		else if (compte == n) {
-			tab[cases].mvt= 6; //on va en bas
+			tab[cases].Mvt= 6; //on va en bas
 		}
 		else if (compte > n) {
-			tab[cases].mvt= 7; //on va en diagonale bas droite
+			tab[cases].Mvt= 7; //on va en diagonale bas droite
 		}
 		i=(i+1)%N; //change la valeur de l'axe des abscisses
 		cases++;   // change la prochaine case à remplir
@@ -67,17 +62,17 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	j=(y-(n-1)+N)%N;
 	i=(x-n+N)%N;
 	for (int compte=0; compte < longueurColonne ; compte ++ ){
-		tab[cases].position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
+		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n-1) {
-			tab[cases].mvt= 0; //on va en diagonale haut gauche
+			tab[cases].Mvt= 0; //on va en diagonale haut gauche
 		}
 		else if (compte == n-1) {
-			tab[cases].mvt= 3; //on va à gauche
+			tab[cases].Mvt= 3; //on va à gauche
 		}
 		else if (compte > n-1) {
-			tab[cases].mvt= 5; //on va en diagonale bas gauche
+			tab[cases].Mvt= 5; //on va en diagonale bas gauche
 		}
 		j=(j+1)%N; //change la valeur de l'axe des ordonnées
 		cases++;   // change la prochaine case à remplir
@@ -87,17 +82,17 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	j=(y-(n-1)+N)%N;
 	i=(x+n+N)%N;
 	for (int compte=0; compte < longueurColonne ; compte ++ ){
-		tab[cases].position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
+		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n-1) {
-			tab[cases].mvt= 2; //on va en diagonale haut droite
+			tab[cases].Mvt= 2; //on va en diagonale haut droite
 		}
 		else if (compte == n-1) {
-			tab[cases].mvt= 4; //on va à droite
+			tab[cases].Mvt= 4; //on va à droite
 		}
 		else if (compte > n-1) {
-			tab[cases].mvt= 7; //on va en diagonale bas droite
+			tab[cases].Mvt= 7; //on va en diagonale bas droite
 		}
 		j=(j+1)%N; //change la valeur de l'axe des ordonnées
 		cases++;   // change la prochaine case à remplir
@@ -109,11 +104,11 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	
 		
 
-int filtreCaseSansPuc( caseMvt tab[],  nbCaseRempli , potager potager){
+int filtreCaseSansPuc( caseMvt tab[],  int nbCaseRempli , potager *potager){
 	int booleen;
 	for (int i=0;i<nbCaseRempli;i++){
 		
-		booleen=VerifPasPuceron(tab[i].position,potager)
+		booleen=VerifPasPuceron(tab[i].Position,potager);
 		if( !booleen ){ //si il y a un puceron :
 			
 			EchangeTabCaseMvt(tab, i, nbCaseRempli-1); // 1: on échange notre case avec déjà un puceron avec la dernière du tableau
@@ -128,11 +123,11 @@ int filtreCaseSansPuc( caseMvt tab[],  nbCaseRempli , potager potager){
 
 
 
-int filtreCaseAvecTomate( caseMvt tab[],  nbCaseRempli , potager potager){
+int filtreCaseAvecTomate( caseMvt tab[], int nbCaseRempli , potager * potager){
 	int booleen;
 	for (int i=0;i<nbCaseRempli;i++){
 		
-		booleen=VerifSiTomate(tab[i].position,potager)
+		booleen=VerifSiTomate(tab[i].Position,potager);
 		if( !booleen ){ //si il y a pas de tomate :
 			
 			EchangeTabCaseMvt(tab, i, nbCaseRempli-1); // 1: on échange notre case avec déjà un puceron avec la dernière du tableau
@@ -144,7 +139,7 @@ int filtreCaseAvecTomate( caseMvt tab[],  nbCaseRempli , potager potager){
 }
 
 
-*/
+
 
 
 

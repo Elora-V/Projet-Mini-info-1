@@ -1,9 +1,11 @@
+
+# faire make all, puis ./all
+
 CC=gcc
 flags=-Wall
 
-
 # compiler le tout :----------
-
+	
 all: simulation
 
 simulation:MainProjet.o SimulationTour.o Affichage.o ListeCaseFiltre.o fonctionBase.o Initialisation.o
@@ -40,4 +42,4 @@ clean:
 	rm -f *.o
 	
 mrpropre: 
-	rm -f main
+	rm -f all

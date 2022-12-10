@@ -4,11 +4,14 @@
 #include "structure.h"
 
 
-//a faire
 
-void testAffichage();
+void affichePotager(potager *potager);
 
+void afficheLigne();
 
+void TabNNespace(char tab[N][N]);
+
+void RemplirNNpuceron( potager * potager, char tab[N][N]);
 
 
 

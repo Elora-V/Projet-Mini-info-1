@@ -6,14 +6,12 @@
 
 
 
-void testListeCaseFiltre();
 
-/*
 int listaNCase(coord position , int n , caseMvt tab[]);
 
-int filtreCaseSansPuc( caseMvt tab[],  nbCaseRempli , potager potager);
+int filtreCaseSansPuc( caseMvt tab[], int nbCaseRempli , potager* potager);
 
-int filtreCaseAvecTomate( caseMvt tab[],  nbCaseRempli , potager potager);
-*/
+int filtreCaseAvecTomate( caseMvt tab[], int nbCaseRempli , potager *potager);
+
 
 #endif
