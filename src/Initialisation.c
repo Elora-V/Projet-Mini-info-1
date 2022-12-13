@@ -21,85 +21,40 @@ void IniPotagerTomate(potager*potager){
 	}
 }
 
-//initialisation d'un puceron
-
-//A CHANGER, PREND EN PARAM POSITION, MVT ET DESSIN MVT
-void IniPuceron(puceron*puceron, coord position){
-	coord position;
-	
-	(*puceron).Position=position;
-	(*puceron).AMange=0;
-	(*puceron).Vie=10;
-	(*puceron).Mvt=random;
-	(*puceron).DessinMvt='<'; //a changer, mis ca pour test
-}
+			
 
 
-
-
-
-//mouvement du puceron définit aléatoirement            //A CHANGER, pour le moment jsp encore comment, dc laisse comme ça
-/*char RandMvt(){
-	int mvtNb=rand()%4
-	char mvt;
-	if (mvtNb==0){
-		mvt="<";
-		}
-	else if(mvtNb==1{
-		mvt=">";
-		}
-	else if(mvtNb==2){
-		mvt="∧";
-		}
-	else if(mvtNb==3){
-		mvt="v";
-		}                               
-		return mvt;
-}
-*/
-
-
-
-void RandPosPuc(coord*position){
-	(*position).x= rand()%N;
-	(*position).y=rand()%N;
-	}
-	
-
-// CHANGER CAR INIPUCERON A CHANGE
-void RemplissagePotagerPuceron(potager*potager){
-	int flag;
-	int position; //contiendra la position du puceron
+//initialisation puceron avec ses informations
+void IniPuceron (puceron *puceron){
+	coord position; //contiendra la position du puceron
 	int mvt;	//contiendra le mvt du puceron
 	char dessin;	//contiendra le dessin du puceron
-	(*potager).NbPuceronVie=0;      //initie le nombre de puceron dans le champ à 0
-	puceron P;			//declaration d'un puceron
 	
+	mvt=rand()%8 //on donne un mouvement au hasard
+	TraductionMvtDessin(mvt, &dessin) //on récupère sa version dessinée
+	
+	PositionSansPuceron( &position, potager) //on recupère une position sans puceron
+	
+	RemplirPuceron(puceron, position,mvt,dessin)) //on remplit les informations
+	
+}	
+
+
+void RemplissagePotagerPuceron(potager*potager){
+	
+	puceron puceron;		//declaration d'un puceron
+	(*potager).NbPuceronVie=0;      //initie le nombre de puceron dans le champ à 0
+				
 	//on veut mettre NbPuceron dans le champ:
 	for(int i=0;i<NbPuceron;i++){
-		do{
-			
-			RandPosPuc(&position); //position aléatoire
-			flag=VerifPasPuceron(P.Position,potager); //regarde si un puceron est déjà sur cette case
-		}while(!flag);
 		
-		//quand on a trouvé une case libre on créé le puceron
-		mvt= rand()%8;  //mouvement au hasard
-			
-			//
-			// ...application fonction qui traduit mvt en dessin
-			//
-		IniPuceron(&P,position,mvt,dessin);   //initie le puceron	
+		IniPuceron (&puceron)	
 		AjoutPuceron(&P, potager); //ajout du puceron dans le champ	
 		
 	}
 }
 
-//IL FAUT CREE LA FONCTION AJOUT PUCERON, VOIR SCRIPT CI-DESSOUS
 	
-/*//si la case est libre, on met le puceron :
-		(*potager).EnsPuceron[i]=P;		
-		(*potager).NbPuceronVie++;*/		
 
 
 
