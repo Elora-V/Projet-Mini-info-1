@@ -9,9 +9,9 @@
 
 int listaNCase(coord position , int n , caseMvt tab[]);
 
-int filtreCaseSansPuc( caseMvt tab[], int nbCaseRempli , potager* potager);
+void filtreCaseSansPuc( caseMvt tab[], int *nbCaseRempli , potager* potager);
 
-int filtreCaseAvecTomate( caseMvt tab[], int nbCaseRempli , potager *potager);
+void filtreCaseAvecTomate( caseMvt tab[], int *nbCaseRempli , potager *potager);
 
 
 #endif
