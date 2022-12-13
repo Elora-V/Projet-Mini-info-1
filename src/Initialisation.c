@@ -22,10 +22,11 @@ void IniPotagerTomate(potager*potager){
 }
 
 //initialisation d'un puceron
-void IniPuceron(puceron*puceron){
+
+//A CHANGER, PREND EN PARAM POSITION, MVT ET DESSIN MVT
+void IniPuceron(puceron*puceron, coord position){
 	coord position;
-	int random= rand()%8;
-	RandPosPuc(&position);
+	
 	(*puceron).Position=position;
 	(*puceron).AMange=0;
 	(*puceron).Vie=10;
@@ -65,26 +66,40 @@ void RandPosPuc(coord*position){
 	}
 	
 
-
+// CHANGER CAR INIPUCERON A CHANGE
 void RemplissagePotagerPuceron(potager*potager){
 	int flag;
+	int position; //contiendra la position du puceron
+	int mvt;	//contiendra le mvt du puceron
+	char dessin;	//contiendra le dessin du puceron
 	(*potager).NbPuceronVie=0;      //initie le nombre de puceron dans le champ à 0
 	puceron P;			//declaration d'un puceron
 	
 	//on veut mettre NbPuceron dans le champ:
 	for(int i=0;i<NbPuceron;i++){
 		do{
-			IniPuceron(&P);   //initie le puceron
+			
+			RandPosPuc(&position); //position aléatoire
 			flag=VerifPasPuceron(P.Position,potager); //regarde si un puceron est déjà sur cette case
 		}while(!flag);
-		//si la case est libre, on met le puceron :
-		(*potager).EnsPuceron[i]=P;		
-		(*potager).NbPuceronVie++;
+		
+		//quand on a trouvé une case libre on créé le puceron
+		mvt= rand()%8;  //mouvement au hasard
+			
+			//
+			// ...application fonction qui traduit mvt en dessin
+			//
+		IniPuceron(&P,position,mvt,dessin);   //initie le puceron	
+		AjoutPuceron(&P, potager); //ajout du puceron dans le champ	
+		
 	}
 }
 
+//IL FAUT CREE LA FONCTION AJOUT PUCERON, VOIR SCRIPT CI-DESSOUS
 	
-		
+/*//si la case est libre, on met le puceron :
+		(*potager).EnsPuceron[i]=P;		
+		(*potager).NbPuceronVie++;*/		
 
 
 
