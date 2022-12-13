@@ -43,3 +43,60 @@ int VerifPasPuceron(coord position ,potager *potager){
 }
 		
 
+//position aleatoire
+void RandPosPuc(coord*position){
+	(*position).x= rand()%N;
+	(*position).y=rand()%N;
+	}
+
+//position aléatoire du champ sans puceron
+void PositionSansPuceron( coord *position, potager *potager){
+	int flag;
+	do{		
+		RandPosPuc(position); //position aléatoire
+		flag=VerifPasPuceron(position,potager); //regarde si un puceron est déjà sur cette case
+		}while(!flag);
+}
+			
+		
+		
+void TraductionMvtDessin(int mvtNb, char *mvtdessin){
+	
+	//a changer:
+	/*if (mvtNb==0){
+		mvt="<";
+		}
+	else if(mvtNb==1{
+		mvt=">";
+		}
+	else if(mvtNb==2){
+		mvt="∧";
+		}
+	else if(mvtNb==3){
+		mvt="v";
+		}                               
+		return mvt;*/
+}
+
+
+//on remplit les informations d'un puceron
+void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin)){
+	
+	(*puceron).Position=position;
+	(*puceron).AMange=0;
+	(*puceron).Vie=10;
+	(*puceron).Mvt=mvt;
+	(*puceron).DessinMvt=dessin;
+}
+
+
+void AjoutPuceron( puceron *puceron, potager *potager){
+		(*potager).EnsPuceron[(*potager).NbPuceronVie]=puceron;		
+		(*potager).NbPuceronVie++;	
+}
+	
+
+
+
+
+
