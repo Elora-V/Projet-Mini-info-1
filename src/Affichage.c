@@ -17,7 +17,7 @@ void affichePotager(potager *potager){
 	//affichage potager (tomate et puceron):
 	for (int i=0;i<N;i++){
 	
-		printf("|"); //trait gauche potager
+	
 		
 		for (int j=0;j<N;j++){
 			tomate=(*potager).Tomate[i][j].Maturite;

@@ -4,7 +4,7 @@
 #include "structure.h"
 
 
-//a faire
-
+void reproduction1Puceron( puceron*puceron, potager *potager);
+void reproTousPuceron(potager*potager);
 
 #endif

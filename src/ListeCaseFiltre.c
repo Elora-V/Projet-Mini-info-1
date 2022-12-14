@@ -4,7 +4,7 @@
 
 
 
-int listaNCase(coord position , int n , caseMvt tab[]){ 
+int listaNCase(coord position , int  n , caseMvt tab[]){ 
 	
 	//initialisation et/ou déclarations des variables
 	int i;
@@ -101,42 +101,70 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 	return cases; //le nombre de case que l'on vient d'écrire dans le tableau
 }	
 	
-	
-		
 
-int filtreCaseSansPuc( caseMvt tab[],  int nbCaseRempli , potager *potager){
+
+
+	
+void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
-	for (int i=0;i<nbCaseRempli;i++){
+	int i=0;
+	coord *pos;
+	
+	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
 		
-		booleen=VerifPasPuceron(tab[i].Position,potager);
+		pos=&(tab[i].Position); //pos est un pointeur, on lui donne une adresse
+		booleen=VerifPasPuceron(pos,potager); //potager est un pointeur, donc pas &potager
+		
 		if( !booleen ){ //si il y a un puceron :
 			
-			EchangeTabCaseMvt(tab, i, nbCaseRempli-1); // 1: on échange notre case avec déjà un puceron avec la dernière du tableau
-			nbCaseRempli--;                            // 2: on indique qu'on a une case rempli en moins
+			// 1: on échange notre case avec déjà un puceron avec la dernière du tableau (si ce n'est pas la meme)
+			if (i!= *nbCaseRempli-1){ 
+				EchangeTabCaseMvt(tab, i, *nbCaseRempli-1); 
+			}
+			// 2: on indique qu'on a une case rempli en moins
+			*nbCaseRempli--;
+			                            
+			// 3 :on voudra verifier que la case mise à la place n'a pas de puceron, donc on recule d'un cran dans le tableau
+			i--; 
 			
-		}	
+		}
 		
+		i++;		
 	}
-	return nbCaseRempli;	
 }
 
 
 
 
-int filtreCaseAvecTomate( caseMvt tab[], int nbCaseRempli , potager * potager){
+
+void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
-	for (int i=0;i<nbCaseRempli;i++){
+	int i=0;
+	coord *pos;
+	
+	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
 		
-		booleen=VerifSiTomate(tab[i].Position,potager);
-		if( !booleen ){ //si il y a pas de tomate :
+		pos=&(tab[i].Position); //adresse de la position
+		booleen=VerifSiTomate(pos,potager);
+		
+		if( !booleen ){ //si il y a un puceron :
 			
-			EchangeTabCaseMvt(tab, i, nbCaseRempli-1); // 1: on échange notre case avec déjà un puceron avec la dernière du tableau
-			nbCaseRempli--;                            // 2: on indique qu'on a une case rempli en moins
+			// 1: on échange notre case avec déjà un puceron avec la dernière du tableau (si ce n'est pas la meme)
+			if (i!= *nbCaseRempli-1){ 
+				EchangeTabCaseMvt(tab, i, *nbCaseRempli-1); 
+			}
+			// 2: on indique qu'on a une case rempli en moins
+			*nbCaseRempli--;
+			                            
+			// 3 :on voudra verifier que la case mise à la place n'a pas de puceron, donc on recule d'un cran dans le tableau
+			i--; 
 			
-		}		
+		}
+		
+		i++;		
 	}
-	return nbCaseRempli;	
 }
+
 
 
 

@@ -20,26 +20,86 @@ void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 ){
 }	
 
 
-int VerifSiTomate(coord position, potager* potager){
+int VerifSiTomate(coord *position, potager* potager){
 	int flag=1;
-	int x= position.x;
-	int y= position.y;
+	int x= (*position).x;
+	int y= (*position).y;
 	if ( (*potager).Tomate[x][y].JRepousse <5 ){ //si la tomate est non mure
 		flag=0;
 	}
 	return flag;
 }
 
-int VerifPasPuceron(coord position ,potager *potager){
+int VerifPasPuceron(coord *position ,potager *potager){
 	int flag=1;
 	int i=0;
 	while(i<(*potager).NbPuceronVie && flag){
-		if(position.x==(*potager).EnsPuceron[i].Position.x && position.y==(*potager).EnsPuceron[i].Position.y){
+	
+		if((*position).x==(*potager).EnsPuceron[i].Position.x && (*position).y==(*potager).EnsPuceron[i].Position.y){
 			flag=0;
+			
 		}
 		i++;
 	}
 	return flag;
 }
 		
+
+//position aleatoire
+void RandPosPuc(coord*position){
+	(*position).x= rand()%N;
+	(*position).y=rand()%N;
+	}
+
+//position aléatoire du champ sans puceron
+void PositionSansPuceron( coord *position, potager *potager){
+	int flag;
+	do{		
+		RandPosPuc(position); //position aléatoire
+		flag=VerifPasPuceron(position,potager); //regarde si un puceron est déjà sur cette case
+		}while(!flag);
+}
+			
+		
+		
+void TraductionMvtDessin(int mvtNb, char *mvtDessin){
+	
+	
+	*mvtDessin='<';       //a changer, par default pr tester
+	/*if (mvtNb==0){
+		mvt="<";
+		}
+	else if(mvtNb==1{
+		mvt=">";
+		}
+	else if(mvtNb==2){
+		mvt="∧";
+		}
+	else if(mvtNb==3){
+		mvt="v";
+		}                               
+		return mvt;*/
+}
+
+
+//on remplit les informations d'un puceron
+void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin){
+	
+	(*puceron).Position=position;
+	(*puceron).AMange=0;
+	(*puceron).Vie=10;
+	(*puceron).Mvt=mvt;
+	(*puceron).DessinMvt=dessin;
+}
+
+
+void AjoutPuceron( puceron *puceron, potager *potager){
+		(*potager).EnsPuceron[(*potager).NbPuceronVie]=*puceron;		
+		(*potager).NbPuceronVie++;	
+}
+	
+
+
+
+
 

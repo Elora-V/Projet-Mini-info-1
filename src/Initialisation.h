@@ -9,16 +9,12 @@ void IniTomates(tomate*tomate);
 
 void IniPotagerTomate(potager*potager);
 
-void IniPuceron(puceron*puceron);
-
-//char RandMvt();
-
-void RandPosPuc(coord*position);
+void IniPuceron (puceron *puceron,potager *potager);
 
 
 void RemplissagePotagerPuceron(potager*potager);
 
- //a faire
+
 
 
 #endif
