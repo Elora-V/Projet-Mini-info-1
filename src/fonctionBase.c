@@ -20,22 +20,24 @@ void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 ){
 }	
 
 
-int VerifSiTomate(coord position, potager* potager){
+int VerifSiTomate(coord *position, potager* potager){
 	int flag=1;
-	int x= position.x;
-	int y= position.y;
+	int x= (*position).x;
+	int y= (*position).y;
 	if ( (*potager).Tomate[x][y].JRepousse <5 ){ //si la tomate est non mure
 		flag=0;
 	}
 	return flag;
 }
 
-int VerifPasPuceron(coord position ,potager *potager){
+int VerifPasPuceron(coord *position ,potager *potager){
 	int flag=1;
 	int i=0;
 	while(i<(*potager).NbPuceronVie && flag){
-		if(position.x==(*potager).EnsPuceron[i].Position.x && position.y==(*potager).EnsPuceron[i].Position.y){
+	
+		if((*position).x==(*potager).EnsPuceron[i].Position.x && (*position).y==(*potager).EnsPuceron[i].Position.y){
 			flag=0;
+			
 		}
 		i++;
 	}
@@ -60,9 +62,10 @@ void PositionSansPuceron( coord *position, potager *potager){
 			
 		
 		
-void TraductionMvtDessin(int mvtNb, char *mvtdessin){
+void TraductionMvtDessin(int mvtNb, char *mvtDessin){
 	
-	//a changer:
+	
+	*mvtDessin='<';       //a changer, par default pr tester
 	/*if (mvtNb==0){
 		mvt="<";
 		}
@@ -80,7 +83,7 @@ void TraductionMvtDessin(int mvtNb, char *mvtdessin){
 
 
 //on remplit les informations d'un puceron
-void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin)){
+void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin){
 	
 	(*puceron).Position=position;
 	(*puceron).AMange=0;
@@ -91,7 +94,7 @@ void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin)){
 
 
 void AjoutPuceron( puceron *puceron, potager *potager){
-		(*potager).EnsPuceron[(*potager).NbPuceronVie]=puceron;		
+		(*potager).EnsPuceron[(*potager).NbPuceronVie]=*puceron;		
 		(*potager).NbPuceronVie++;	
 }
 	

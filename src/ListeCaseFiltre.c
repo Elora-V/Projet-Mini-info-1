@@ -4,7 +4,7 @@
 
 
 
-int listaNCase(coord position , int n , caseMvt tab[]){ 
+int listaNCase(coord position , int  n , caseMvt tab[]){ 
 	
 	//initialisation et/ou déclarations des variables
 	int i;
@@ -108,10 +108,12 @@ int listaNCase(coord position , int n , caseMvt tab[]){
 void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
 	int i=0;
+	coord *pos;
 	
 	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
 		
-		booleen=VerifPasPuceron(tab[i].Position,potager); //potager est un pointeur, donc pas &potager
+		pos=&(tab[i].Position); //pos est un pointeur, on lui donne une adresse
+		booleen=VerifPasPuceron(pos,potager); //potager est un pointeur, donc pas &potager
 		
 		if( !booleen ){ //si il y a un puceron :
 			
@@ -138,10 +140,12 @@ void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
 	int i=0;
+	coord *pos;
 	
 	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
 		
-		booleen=VerifSiTomate(tab[i].Position,potager);
+		pos=&(tab[i].Position); //adresse de la position
+		booleen=VerifSiTomate(pos,potager);
 		
 		if( !booleen ){ //si il y a un puceron :
 			

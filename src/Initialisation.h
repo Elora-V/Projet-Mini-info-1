@@ -9,7 +9,7 @@ void IniTomates(tomate*tomate);
 
 void IniPotagerTomate(potager*potager);
 
-void IniPuceron(puceron*puceron);
+void IniPuceron (puceron *puceron,potager *potager);
 
 
 void RemplissagePotagerPuceron(potager*potager);

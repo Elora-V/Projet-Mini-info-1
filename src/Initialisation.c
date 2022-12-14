@@ -25,17 +25,17 @@ void IniPotagerTomate(potager*potager){
 
 
 //initialisation puceron avec ses informations
-void IniPuceron (puceron *puceron){
+void IniPuceron (puceron *puceron,potager *potager){
 	coord position; //contiendra la position du puceron
 	int mvt;	//contiendra le mvt du puceron
 	char dessin;	//contiendra le dessin du puceron
 	
-	mvt=rand()%8 //on donne un mouvement au hasard
-	TraductionMvtDessin(mvt, &dessin) //on récupère sa version dessinée
+	mvt=rand()%8; //on donne un mouvement au hasard
+	TraductionMvtDessin(mvt, &dessin); //on récupère sa version dessinée
 	
-	PositionSansPuceron( &position, potager) //on recupère une position sans puceron
+	PositionSansPuceron(&position, potager); //on recupère une position sans puceron
 	
-	RemplirPuceron(puceron, position,mvt,dessin)) //on remplit les informations
+	RemplirPuceron(puceron, position,mvt,dessin); //on remplit les informations
 	
 }	
 
@@ -47,9 +47,9 @@ void RemplissagePotagerPuceron(potager*potager){
 				
 	//on veut mettre NbPuceron dans le champ:
 	for(int i=0;i<NbPuceron;i++){
-		
-		IniPuceron (&puceron)	
-		AjoutPuceron(&P, potager); //ajout du puceron dans le champ	
+	
+		IniPuceron (&puceron,potager);
+		AjoutPuceron(&puceron, potager); //ajout du puceron dans le champ	
 		
 	}
 }
