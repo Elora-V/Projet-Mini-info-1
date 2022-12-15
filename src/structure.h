@@ -22,7 +22,7 @@ typedef struct {
 		 int Mvt;     // numéro de 0 à 7 correspondant à une direction (voir schéma rendu écrit)
 		 char DessinMvt; //le caractère à dessiner
 		 
-		 } puceron;
+		 } insecte;
 		 
 typedef struct {
 		 char Maturite; //le caractère à dessiner
@@ -33,7 +33,7 @@ typedef struct {
 typedef struct {
 
 		tomate Tomate[N][N];   //le potager avec les informations des tomates        
-		puceron EnsPuceron[N]; //ensemble des pucerons dans le potager
+		insecte EnsPuceron[N]; //ensemble des pucerons dans le potager
 		int NbPuceronVie;      //nombre de puceron en vie
 		
 		}potager;
