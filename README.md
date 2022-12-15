@@ -77,3 +77,7 @@ Pour enregistrer le nouveau:
       git config credential.helper store
 
 faire un git pull par exemple, tu rentres tes infos et elles seront retenues.
+
+###Couleur en console en C
+
+voir https://www.theurbanpenguin.com/4184-2/
