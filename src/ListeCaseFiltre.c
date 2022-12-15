@@ -166,6 +166,24 @@ void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager)
 }
 
 
+void CasesApresMvt(coord *cases, coord *position, int *mvt){
+	
+	//choix du x de la case 
+	if (*mvt == 0 || *mvt == 3 || *mvt == 5){ //si c'est un mouvement vers la gauche
+		(*cases).x=( (*position).x - 1 + N )%N;
+	} else if (*mvt == 2 || *mvt == 4 || *mvt == 7){ //si c'est un mouvement vers la droite
+		(*cases).x=( (*position).x + 1 + N )%N;
+	}
+
+	//choix du y de la case 
+	if (*mvt == 0 || *mvt == 1 || *mvt == 2){ //si c'est un mouvement vers le haut
+		(*cases).y=( (*position).y - 1 + N )%N;
+	} else if (*mvt == 5 || *mvt == 6 || *mvt == 7){ //si c'est un mouvement vers le bas
+		(*cases).y=( (*position).y + 1 + N )%N;
+	}
+
+}
+
 
 
 

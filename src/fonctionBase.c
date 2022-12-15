@@ -53,11 +53,16 @@ void RandPosPuc(coord*position){
 
 //position aléatoire du champ sans puceron
 void PositionSansPuceron( coord *position, potager *potager){
-	int flag;
-	do{		
-		RandPosPuc(position); //position aléatoire
-		flag=VerifPasPuceron(position,potager); //regarde si un puceron est déjà sur cette case
-		}while(!flag);
+	
+	if( (*potager).NbPuceronVie < 30 ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
+		int flag;
+		do{		
+			RandPosPuc(position); //position aléatoire
+			flag=VerifPasPuceron(position,potager); //regarde si un puceron est déjà sur cette case
+			}while(!flag);
+	} else {
+		printf("\nPlus de place sans puceron\n");
+	}
 }
 			
 		
@@ -83,7 +88,7 @@ void TraductionMvtDessin(int mvtNb, char *mvtDessin){
 
 
 //on remplit les informations d'un puceron
-void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin){
+void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin){
 	
 	(*puceron).Position=position;
 	(*puceron).AMange=0;
@@ -93,11 +98,12 @@ void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin){
 }
 
 
-void AjoutPuceron( puceron *puceron, potager *potager){
+void AjoutPuceron( insecte *puceron, potager *potager){
 		(*potager).EnsPuceron[(*potager).NbPuceronVie]=*puceron;		
 		(*potager).NbPuceronVie++;	
 }
 	
+
 
 
 

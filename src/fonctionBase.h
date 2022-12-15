@@ -16,9 +16,9 @@ void PositionSansPuceron( coord *position, potager *potager);
 
 void TraductionMvtDessin(int mvtNb, char *mvtdessin);
 
-void RemplirPuceron(puceron*puceron,coord position, int mvt,char dessin);
+void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin);
 
-void AjoutPuceron( puceron *puceron, potager *potager);
+void AjoutPuceron( insecte *puceron, potager *potager);
 
 
 
