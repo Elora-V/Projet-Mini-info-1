@@ -80,4 +80,4 @@ faire un git pull par exemple, tu rentres tes infos et elles seront retenues.
 
 ### Couleur en console en C
 
-voir https://www.theurbanpenguin.com/4184-2/
+voir https://www.theurbanpenguin.com/4184-2/ et https://chrisyeh96.github.io/2020/03/28/terminal-colors.html
