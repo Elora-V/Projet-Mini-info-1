@@ -78,6 +78,6 @@ Pour enregistrer le nouveau:
 
 faire un git pull par exemple, tu rentres tes infos et elles seront retenues.
 
-###Couleur en console en C
+### Couleur en console en C
 
 voir https://www.theurbanpenguin.com/4184-2/
