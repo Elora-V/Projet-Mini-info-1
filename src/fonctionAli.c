@@ -77,7 +77,59 @@ void RemplissagePotagerPuceron(potager*potager){
 	}
 }
 
-		
+
+void Maturation1Tomate(tomate*tomate){
+	#IniTomate(tomate*tomate); ?
+	#PuceronMange(  ) ?
+	(*tomate).JRepousse ++;
+	if((*tomate).JRepousse<2){
+		(*tomate).Maturite='.';
+	}
+	else if ((*tomate).JRepousse>2 && (*tomate).JRepousse<5){
+		(*tomate).Maturite='o';
+	}
+	else{
+		(*tomate).Maturite='O';
+	}
+}
+
+void MaturationTouteTomate (potager*potager){
+	...
+	
+}
+				
+void Puceron1Mange(insecte*puceron, potager*potager){
+	int flag =VerifSiTomate((*puceron).Position, potager);
+	if (flag){ 
+		(*puceron).AMange++;
+	}
+}
+
+void TousPuceronMange(){
+	
+	...
+	
+	
+}
+
+void Vieillissement1Puceron(insecte*puceron){
+	(*puceron).vie=(*puceron).vie-1;
+	}
+
+void VieillissementTousPuceron(potager*potager){  /*je sais pas s'il faut rajouter EnsPuceron aussi en argumet*/
+	int i;
+	insecte *puceron;
+	for (i=0,i<N,i++){
+		puceron=&( (*potager).EnsPuceron[i] );
+		Vieillissement1Puceron(puceron);
+	}
+
+
+void MortPuceron(insecte*puceron,potager * potager){
+	(*puceron).Vie=0;
+	...
+}
+
 
 
 
