@@ -80,7 +80,6 @@ void RemplissagePotagerPuceron(potager*potager){
 
 
 
-
 void MotifTomate(int JRepousse,char*Maturite){
 	if(JRepousse<2){
 		*Maturite='.';

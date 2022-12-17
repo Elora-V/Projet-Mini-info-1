@@ -12,7 +12,7 @@ void affichePotager(potager *potager){
 	char p; //le caractère du puceron
 	char tabPuceron[N][N]; // tableau du format du potager, il contiendra les caractères des pucerons
 	TabNNespace(tabPuceron); // on le rempli d'espace
-	RemplirNNpuceron(potager, tabPuceron); //on met les pucerons
+	RemplirNNpuceron(potager, tabPuceron); //on met les pucerons dans un tableau NxN
 	
 	//affichage potager (tomate et puceron):
 	for (int i=0;i<N;i++){
@@ -22,10 +22,17 @@ void affichePotager(potager *potager){
 		for (int j=0;j<N;j++){
 			tomate=(*potager).Tomate[i][j].Maturite;
 			p=tabPuceron[i][j];
-			printf(" %c%c ",tomate,p);
+			if (tomate=='O'){
+				printf("\033[47;31m %c",tomate);//couleur rouge pour tomate 
+			}else{
+				printf("\033[47;32m %c",tomate);//couleur verte pour tomate 
+			}
+			printf("\033[47;32m%c ",p); //couleur verte pour pucerons
+			printf("\033[0m"); //remet la couleur normale
 			
 		}
 		printf("\n");
+		
 	}	
 	
 }

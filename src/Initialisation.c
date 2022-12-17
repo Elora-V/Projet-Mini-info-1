@@ -25,7 +25,7 @@ void IniPotagerTomate(potager*potager){
 
 
 //initialisation puceron avec ses informations
-void IniPuceron (puceron *puceron,potager *potager){
+void IniPuceron (insecte *puceron,potager *potager){
 	coord position; //contiendra la position du puceron
 	int mvt;	//contiendra le mvt du puceron
 	char dessin;	//contiendra le dessin du puceron
@@ -42,7 +42,7 @@ void IniPuceron (puceron *puceron,potager *potager){
 
 void RemplissagePotagerPuceron(potager*potager){
 	
-	puceron puceron;		//declaration d'un puceron
+	insecte puceron;		//declaration d'un puceron
 	(*potager).NbPuceronVie=0;      //initie le nombre de puceron dans le champ à 0
 				
 	//on veut mettre NbPuceron dans le champ:

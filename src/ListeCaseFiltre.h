@@ -13,5 +13,7 @@ void filtreCaseSansPuc( caseMvt tab[], int *nbCaseRempli , potager* potager);
 
 void filtreCaseAvecTomate( caseMvt tab[], int *nbCaseRempli , potager *potager);
 
+void CasesApresMvt(coord *cases, coord *position, int *mvt);
+
 
 #endif
