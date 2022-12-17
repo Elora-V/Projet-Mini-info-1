@@ -105,7 +105,21 @@ void AjoutPuceron( insecte *puceron, potager *potager){
 	
 
 
+void MotifTomate(int JRepousse,char*Maturite){
+	if(JRepousse<2){
+		*Maturite='.';
+	}
+	else if (JRepousse>=2 && JRepousse<5){
+		*Maturite='o';
+	}
+	else{
+		*Maturite='O';
+	}
+}
 
+void MortTomate(tomate*tomate){
+	(*tomate).JRepousse=0;
+	(*tomate).Maturite='.';
 
-
+}
 
