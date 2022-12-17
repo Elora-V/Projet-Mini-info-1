@@ -20,6 +20,9 @@ void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin);
 
 void AjoutPuceron( insecte *puceron, potager *potager);
 
+void MotifTomate(int JRepousse,char*Maturite);
+
+void MortTomate(tomate*tomate);
 
 
 #endif

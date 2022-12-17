@@ -3,10 +3,48 @@
 #include "fonctionBase.h"
 #include "structure.h"
 
+void Maturation1Tomate(tomate*tomate){
+	char*maturite;
+	(*tomate).JRepousse ++;
+	maturite=&((*tomate).Maturite);
+	MotifTomate((*tomate).JRepousse,maturite);	
+}
+
+void MaturationTouteTomate(potager*potager){
+	tomate*Tomate;
+	for(int i=0;i<N;i++){
+		for(int j=0;j<N;j++){
+			Tomate=&((*potager).Tomate[i][j]);//adresse tomate 
+			Maturation1Tomate(Tomate);
+		}
+	}
+}
+
+void Puceron1Mange(insecte*puceron, potager*potager){
+	tomate *Tomate;
+	coord *pos=(&(*puceron).Position); //adresse de la position du puceron
+	int SiTomate =VerifSiTomate(pos, potager);
+	if (SiTomate){ 
+		(*puceron).AMange++;
+		int x=(*puceron).Position.x;
+		int y=(*puceron).Position.y;		
+		Tomate=&((*potager).Tomate[x][y]);
+		MortTomate(Tomate);
+	}
+	else{
+		(*puceron).AMange=0;
+	}
+}
+
+void TousPuceronMange(potager*potager){
+	insecte*puceron;
+	for(int i=0;i<(*potager).NbPuceronVie;i++){
+		puceron=&((*potager).EnsPuceron[i]);
+		Puceron1Mange(puceron,potager);
+	}
+}
 
 void reproduction1Puceron( insecte*puceron, potager *potager){
-
-	
 	
 	// 1 : verifions si le puceron peut se reproduire et si il y a de la place sur le champ,
 	// si oui, on continu les étapes
@@ -75,6 +113,7 @@ void Mvt1Puceron( insecte*puceron, potager *potager){
 		
 		// 2 : On continue le mouvement du puceron si possible
 		CasesApresMvt(&cases, position, mvt); //recupère la position du puceron s'il continue sont mouvement
+		printf("\ncontinue mvt\n");
 		if ( VerifPasPuceron(&cases, potager) && VerifSiTomate(&cases, potager) ){ //si cette case est libre et a une tomate 
 			(*puceron).Position=cases; //le puceron y va
 		}
@@ -89,20 +128,22 @@ void Mvt1Puceron( insecte*puceron, potager *potager){
 			//4 : on applique un filtre pour ne récupérer que les cases attenantes sans puceron
 			filtreCaseSansPuc(tab,&nbcase,potager);
 			if ( nbcase == 0 ){ 
+			
+				/*
 				// 5 : si il est entouré de puceron, il va sur une case au hasard libre
 				coord caseHasard;
 				PositionSansPuceron(&caseHasard, potager); //choix case au hasard libre
-				(*puceron).Position=caseHasard; // on lui change sa position
+				(*puceron).Position=caseHasard; // on lui change sa position*/
 				
 			} else {
 				//6 : sinon on applique un filtre pour ne récupérer que les cases attenantes avec tomate
 				filtreCaseSansPuc(tab,&nbcase,potager);
 				if ( nbcase == 0 ){ 
-					// 7 : si il est entouré de tomate non mure ou avec puceron, il va sur une case au hasard libre
+					/*// 7 : si il est entouré de tomate non mure ou avec puceron, il va sur une case au hasard libre
 					//il existe le cas puceron sur une case avec tomate à cette étape car les descendants des pucerons de l'étape reproduction n'ont pas mangé
 					coord caseHasard;
 					PositionSansPuceron(&caseHasard, potager); //choix case au hasard libre
-					(*puceron).Position=caseHasard; // on lui change sa position
+					(*puceron).Position=caseHasard; // on lui change sa position*/
 				
 				} else{
 					// 8 : sinon choix d'une case attenante au hasard respectant les conditions
