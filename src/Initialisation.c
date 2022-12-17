@@ -16,6 +16,7 @@ void IniPotagerTomate(potager*potager){
 	//on remplit le champ
 	for(int i=0;i<N;i++){
 		for(int j=0;j<N;j++){
+			
 			(*potager).Tomate[i][j]=tomate; //on la plante dans sa case 
 		}
 	}

@@ -54,7 +54,7 @@ void RandPosPuc(coord*position){
 //position aléatoire du champ sans puceron
 void PositionSansPuceron( coord *position, potager *potager){
 	
-	if( (*potager).NbPuceronVie < 30 ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
+	if( (*potager).NbPuceronVie < N*N ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
 		int flag;
 		do{		
 			RandPosPuc(position); //position aléatoire
