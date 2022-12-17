@@ -9,11 +9,15 @@
 #include <time.h>
 
 
+//-------------------------------------------------------------------------------------------------------------------------Structure d'une coordonnée (x,y)------------------//
+
 typedef struct {
-		int x;
-		int y;
+		int x; //numero de ligne
+		int y; //numero de colonne
 		
 		} coord;
+
+//-------------------------------------------------------------------------------------------------------------------------Structure d'un insecte------------------//
 		
 typedef struct {
 		 coord Position;
@@ -23,12 +27,18 @@ typedef struct {
 		 char DessinMvt; //le caractère à dessiner
 		 
 		 } insecte;
-		 
+	
+	
+//-------------------------------------------------------------------------------------------------------------------------Structure d'une tomate------------------//
+ 
 typedef struct {
 		 char Maturite; //le caractère à dessiner
 		 int JRepousse; //le nombre de jour depuis la dernières fois que la tomate a été mangé
 		 
 		 }tomate;
+
+
+//-------------------------------------------------------------------------------------------------------------------------Structure du potager------------------//
 		 
 typedef struct {
 
@@ -37,6 +47,11 @@ typedef struct {
 		int NbPuceronVie;      //nombre de puceron en vie
 		
 		}potager;
+		
+
+//-------------------------------------------------------------------------------------------------------------------------Structure caseMvt------------------//
+
+//Cette structure est utile pour la recherche de case attenante.
 		 
 typedef struct {
 		

@@ -2,7 +2,33 @@
 #include "fonctionBase.h"
 #include "structure.h"
 
-//on passe en argument un pointeur meme si ne modifie aucune valeur pour éviter que potager soit recopié d'un environnement à l'autre
+
+//----------------------------------------------------------------------------------------------------------------------------------TabNNespace--------------------//
+
+void TabNNespace(char tab[N][N]){
+	for(int i=0;i<N;i++){
+		for (int j=0;j<N;j++) {
+			tab[i][j]=' ';
+		}
+	}
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------RemplirNNpuceron------------------//
+
+void RemplirNNpuceron( potager* potager, char tab[N][N]){
+	int x;
+	int y;
+	//on remplace le caractère ' ' par le caractère du puceron pour chacun d'entre eux :
+	for (int i=0; i< (*potager).NbPuceronVie ;i++){
+		//récupère la position du puceron
+		x=(*potager).EnsPuceron[i].Position.x;
+		y=(*potager).EnsPuceron[i].Position.y;
+		//on met sont caractère dans le tableau
+		tab[x][y]=(*potager).EnsPuceron[i].DessinMvt;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------affichePotager---------------------//
 
 
 void affichePotager(potager *potager){
@@ -37,39 +63,8 @@ void affichePotager(potager *potager){
 	
 }
 
-//a voir si on l'utilise
-void afficheLigne(){
-	
-	for(int i=0;i<N;i++){
-	printf("+--");
-	}
-	printf("+\n");
-}
 
-
-void TabNNespace(char tab[N][N]){
-	for(int i=0;i<N;i++){
-		for (int j=0;j<N;j++) {
-			tab[i][j]=' ';
-		}
-	}
-}
-
-
-void RemplirNNpuceron( potager* potager, char tab[N][N]){
-	int x;
-	int y;
-	//on remplace le caractère ' ' par le caractère du puceron pour chacun d'entre eux :
-	for (int i=0; i< (*potager).NbPuceronVie ;i++){
-		//récupère la position du puceron
-		x=(*potager).EnsPuceron[i].Position.x;
-		y=(*potager).EnsPuceron[i].Position.y;
-		//on met sont caractère dans le tableau
-		tab[x][y]=(*potager).EnsPuceron[i].DessinMvt;
-	}
-}
-
-
+//------------------------------------------------------------------------------------------------------------------------------affichageSurDemande------------------------//
 
 void affichageSurDemande(int affichage,potager *potager){
 		int oui_non;
@@ -83,8 +78,6 @@ void affichageSurDemande(int affichage,potager *potager){
 			}
 		}
 }
-
-
 
 
 
