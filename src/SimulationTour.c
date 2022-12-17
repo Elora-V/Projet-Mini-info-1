@@ -3,12 +3,21 @@
 #include "fonctionBase.h"
 #include "structure.h"
 
+
+//=====================================================================================================================================================//
+
+
+//----------------------------------------------------------------------------------------------------------Maturation1Tomate-------------------//
+
 void Maturation1Tomate(tomate*tomate){
 	char*maturite;
 	(*tomate).JRepousse ++;
 	maturite=&((*tomate).Maturite);
 	MotifTomate((*tomate).JRepousse,maturite);	
 }
+
+
+//-------------------------------------------------------------------------------------------------------MaturationTouteTomate----------------------//
 
 void MaturationTouteTomate(potager*potager){
 	tomate*Tomate;
@@ -19,6 +28,11 @@ void MaturationTouteTomate(potager*potager){
 		}
 	}
 }
+
+//=====================================================================================================================================================//
+
+
+//----------------------------------------------------------------------------------------------------------Puceron1Mange-------------------//
 
 void Puceron1Mange(insecte*puceron, potager*potager){
 	tomate *Tomate;
@@ -36,6 +50,8 @@ void Puceron1Mange(insecte*puceron, potager*potager){
 	}
 }
 
+//-------------------------------------------------------------------------------------------------------------TousPuceronMange----------------//
+
 void TousPuceronMange(potager*potager){
 	insecte*puceron;
 	for(int i=0;i<(*potager).NbPuceronVie;i++){
@@ -44,59 +60,10 @@ void TousPuceronMange(potager*potager){
 	}
 }
 
-void reproduction1Puceron( insecte*puceron, potager *potager){
-	
-	// 1 : verifions si le puceron peut se reproduire et si il y a de la place sur le champ,
-	// si oui, on continu les étapes
 
-	if ( (*puceron).AMange >= 5 && (*potager).NbPuceronVie < N*N){ //il a mangé 5 tours d'affilé?
-		//2 : on veut la liste des cases adjacentes au puceron,
-		//c'est-à-dire les cases à une distance de 1 du puceron
-		caseMvt tab[N];
-		int nbcase;
-		nbcase=listaNCase( (*puceron).Position, 1, tab); //récupère la longueur de la 'liste' et la 'liste' (tableau)
-		
-		
-		//3 : on applique un filtre pour ne récupérer que les cases attenantes sans puceron
-		filtreCaseSansPuc(tab,&nbcase,potager);
-		
-		
-		if (nbcase >0){//si il existe au moins une case correspondante à nos condistions
-			
-			//4 : on choisit une case au hasard, ça sera la position du nouveau puceron
-			int caseRand=rand()% nbcase;
-			coord pos=tab[caseRand].Position;
-			int mvt=tab[caseRand].Mvt;
-			char dessin;
-			TraductionMvtDessin(mvt, &dessin); //récupère la version dessin du mouvement
-			
-			//5 : on ajoute un puceron
-			
-			dessin='/';
-			
-			insecte enfant;
-			RemplirPuceron(&enfant,pos, mvt ,dessin);
-			AjoutPuceron( &enfant, potager);
-			
-			//6 : s'il s'est reproduit, il devra attendre d'avoir remangé 5 tomates pour se reproduire encore une fois
-			(*puceron).AMange=0;
-	
-		}
-		
-	}
-}
+//=====================================================================================================================================================//
 
-
-void reproTousPuceron(potager*potager){
-	insecte *puceron;
-	int max=(*potager).NbPuceronVie; //on garde en memoire la valeur car elle bouge dans la boucle
-	for (int i=0; i< max;i++){
-		puceron= &((*potager).EnsPuceron[i]); //adresse du puceron
-		reproduction1Puceron( puceron, potager);
-	}
-
-}
-
+//--------------------------------------------------------------------------------------------------------Mvt1Puceron---------------------//
 
 void Mvt1Puceron( insecte*puceron, potager *potager){
 	
@@ -181,6 +148,8 @@ void Mvt1Puceron( insecte*puceron, potager *potager){
 }
 
 
+//---------------------------------------------------------------------------------------------------------MvtTousPuceron--------------------//
+
 void MvtTousPuceron(potager *potager){
 	insecte *puceron;
 	for (int i=0; i<(*potager).NbPuceronVie;i++){
@@ -188,6 +157,64 @@ void MvtTousPuceron(potager *potager){
 		
 		Mvt1Puceron( puceron, potager);
 	}
+}
+
+//=====================================================================================================================================================//
+
+//---------------------------------------------------------------------------------------------------------reproduction1Puceron--------------------//
+
+void reproduction1Puceron( insecte*puceron, potager *potager){
+	
+	// 1 : verifions si le puceron peut se reproduire et si il y a de la place sur le champ,
+	// si oui, on continu les étapes
+
+	if ( (*puceron).AMange >= 5 && (*potager).NbPuceronVie < N*N){ //il a mangé 5 tours d'affilé?
+		//2 : on veut la liste des cases adjacentes au puceron,
+		//c'est-à-dire les cases à une distance de 1 du puceron
+		caseMvt tab[N];
+		int nbcase;
+		nbcase=listaNCase( (*puceron).Position, 1, tab); //récupère la longueur de la 'liste' et la 'liste' (tableau)
+		
+		
+		//3 : on applique un filtre pour ne récupérer que les cases attenantes sans puceron
+		filtreCaseSansPuc(tab,&nbcase,potager);
+		
+		
+		if (nbcase >0){//si il existe au moins une case correspondante à nos condistions
+			
+			//4 : on choisit une case au hasard, ça sera la position du nouveau puceron
+			int caseRand=rand()% nbcase;
+			coord pos=tab[caseRand].Position;
+			int mvt=tab[caseRand].Mvt;
+			char dessin;
+			TraductionMvtDessin(mvt, &dessin); //récupère la version dessin du mouvement
+			
+			//5 : on ajoute un puceron
+			
+			dessin='/';
+			
+			insecte enfant;
+			RemplirPuceron(&enfant,pos, mvt ,dessin);
+			AjoutPuceron( &enfant, potager);
+			
+			//6 : s'il s'est reproduit, il devra attendre d'avoir remangé 5 tomates pour se reproduire encore une fois
+			(*puceron).AMange=0;
+	
+		}
+		
+	}
+}
+
+//---------------------------------------------------------------------------------------------------------reproTousPuceron--------------------//
+
+void reproTousPuceron(potager*potager){
+	insecte *puceron;
+	int max=(*potager).NbPuceronVie; //on garde en memoire la valeur car elle bouge dans la boucle
+	for (int i=0; i< max;i++){
+		puceron= &((*potager).EnsPuceron[i]); //adresse du puceron
+		reproduction1Puceron( puceron, potager);
+	}
+
 }
 
 

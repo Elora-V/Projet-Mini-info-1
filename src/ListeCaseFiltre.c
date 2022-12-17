@@ -3,6 +3,38 @@
 #include "ListeCaseFiltre.h"
 
 
+//--------------------------------------------------------------------------------------------------------------------------------------CasesApresMvt---------------//
+
+
+void CasesApresMvt(coord *cases, coord *position, int *mvt){
+	
+	//choix du x de la case (ligne)
+	if (*mvt == 0 || *mvt == 1 || *mvt == 2){ //si c'est un mouvement vers la gauche
+		(*cases).x=( (*position).x - 1 + N )%N;
+		
+	} else if (*mvt == 5 || *mvt == 6 || *mvt == 7){ //si c'est un mouvement vers la droite
+		(*cases).x=( (*position).x + 1 + N )%N;
+		
+	}else { //pas de mouvement de x
+		(*cases).x= (*position).x ;
+		
+	}
+
+	//choix du y de la case (colonne)
+	if (*mvt == 0 || *mvt == 3 || *mvt == 5){ //si c'est un mouvement vers le haut
+		(*cases).y=( (*position).y - 1 + N )%N;
+		
+	} else if (*mvt == 2 || *mvt == 4 || *mvt == 7){ //si c'est un mouvement vers le bas
+		(*cases).y=( (*position).y + 1 + N )%N;
+		
+	}else{
+		(*cases).y=(*position).y;
+		
+	}
+}
+	
+
+//----------------------------------------------------------------------------------------------------------------------------------------------listaNCase------------------//
 
 int listaNCase(coord position , int  n , caseMvt tab[]){ 
 	
@@ -20,8 +52,8 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 	i=(x-n+N)%N;
 	j=(y-n+N)%N;
 	for (int compte=0; compte < longueurLigne ; compte ++ ){
-		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de la ligne
+		tab[cases].Position.y= j; // la valeur fixé de la colonne
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n) {
 			tab[cases].Mvt= 0; //on va en diagonale haut gauche
@@ -32,7 +64,7 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 		else if (compte > n) {
 			tab[cases].Mvt= 2; //on va en diagonale haut droite
 		}
-		j=(j+1)%N; //change la valeur de l'axe des abscisses
+		j=(j+1)%N; //change la valeur de la colonne
 		cases++;   // change la prochaine case à remplir
 	}
 	
@@ -41,8 +73,8 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 	j=(y-n+N)%N;
 	i=(x+n+N)%N;
 	for (int compte=0; compte < longueurLigne ; compte ++ ){  
-		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de la ligne
+		tab[cases].Position.y= j; // la valeur fixé de la colonne
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n) {
 			tab[cases].Mvt= 5; //on va en diagonale bas gauche
@@ -53,7 +85,7 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 		else if (compte > n) {
 			tab[cases].Mvt= 7; //on va en diagonale bas droite
 		}
-		j=(j+1)%N; //change la valeur de l'axe des abscisses
+		j=(j+1)%N; //change la valeur de la colonne
 		cases++;   // change la prochaine case à remplir
 	}
 	
@@ -62,8 +94,8 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 	i=(x-(n-1)+N)%N;
 	j=(y-n+N)%N;
 	for (int compte=0; compte < longueurColonne ; compte ++ ){
-		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de la ligne
+		tab[cases].Position.y= j; // la valeur fixé de la colonne 
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n-1) {
 			tab[cases].Mvt= 0; //on va en diagonale haut gauche
@@ -74,7 +106,7 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 		else if (compte > n-1) {
 			tab[cases].Mvt= 5; //on va en diagonale bas gauche
 		}
-		i=(i+1)%N; //change la valeur de l'axe des ordonnées
+		i=(i+1)%N; //change la valeur de la ligne
 		cases++;   // change la prochaine case à remplir
 	}
 	
@@ -82,8 +114,8 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 	i=(x-(n-1)+N)%N;
 	j=(y+n+N)%N;
 	for (int compte=0; compte < longueurColonne ; compte ++ ){
-		tab[cases].Position.x= i; // la valeur de l'axe des abscisses
-		tab[cases].Position.y= j; // la valeur fixé de l'axe des ordonnées
+		tab[cases].Position.x= i; // la valeur de la ligne
+		tab[cases].Position.y= j; // la valeur fixé de la colonne
 		// indique les mouvement associés, c'est-à-dire le mouvement nécessaire pour aller dans la direction de la case
 		if (compte < n-1) {
 			tab[cases].Mvt= 2; //on va en diagonale haut droite
@@ -94,7 +126,7 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 		else if (compte > n-1) {
 			tab[cases].Mvt= 7; //on va en diagonale bas droite
 		}
-		i=(i+1)%N; //change la valeur de l'axe des ordonnées
+		i=(i+1)%N; //change la valeur de la ligne
 		cases++;   // change la prochaine case à remplir
 	}
 	
@@ -102,7 +134,7 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 }	
 	
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseSansPuc------------------//
 
 	
 void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
@@ -125,17 +157,14 @@ void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 			*nbCaseRempli=*nbCaseRempli-1;
 			                            
 			// 3 :on voudra verifier que la case mise à la place n'a pas de puceron, donc on recule d'un cran dans le tableau
-			i--; 
-			
-		}
-		
+			i--; 	
+		}		
 		i++;		
 	}
 }
 
 
-
-
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseAvecTomate------------------//
 
 void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
@@ -171,35 +200,24 @@ void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager)
 }
 
 
-void CasesApresMvt(coord *cases, coord *position, int *mvt){
+//----------------------------------------------------------------------------------------------------------------------------------------------EchangeTabCaseMvt------------------//
+
+void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 ){
 	
-	//choix du x de la case (ligne)
-	if (*mvt == 0 || *mvt == 1 || *mvt == 2){ //si c'est un mouvement vers la gauche
-		(*cases).x=( (*position).x - 1 + N )%N;
-		
-	} else if (*mvt == 5 || *mvt == 6 || *mvt == 7){ //si c'est un mouvement vers la droite
-		(*cases).x=( (*position).x + 1 + N )%N;
-		
-	}else { //pas de mouvement de x
-		(*cases).x= (*position).x ;
-		
-	}
-
-	//choix du y de la case (colonne)
-	if (*mvt == 0 || *mvt == 3 || *mvt == 5){ //si c'est un mouvement vers le haut
-		(*cases).y=( (*position).y - 1 + N )%N;
-		
-	} else if (*mvt == 2 || *mvt == 4 || *mvt == 7){ //si c'est un mouvement vers le bas
-		(*cases).y=( (*position).y + 1 + N )%N;
-		
-	}else{
-		(*cases).y=(*position).y;
-		
-	}
+	//on garde en mémoire les valeurs à l'indice 1
+	int x1= tab[indice1].Position.x;
+	int y1= tab[indice1].Position.y;
+	int mvt1= tab[indice1].Mvt;
+	
+	//on met les informations de indice 2 à indice 1
+	tab[indice1]=tab[indice2];
+	
+	//on ecrit les informations de indice 1 dans indice 2
+	tab[indice2].Position.x= x1;
+	tab[indice2].Position.y= y1;
+	tab[indice2].Mvt= mvt1;
+	
 }
-
-
-
 
 
 
