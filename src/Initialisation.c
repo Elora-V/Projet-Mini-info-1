@@ -3,28 +3,33 @@
 #include "Initialisation.h"
 
 
-//initialiser une tomate mure
+//----------------------------------------------------------------------------------------------------------------------------------------IniTomates---------------------------//
+
 void IniTomates(tomate*tomate){
 	(*tomate).Maturite='O';
 	(*tomate).JRepousse=5;
 }
 
-//initialiser le potager tomate
+//----------------------------------------------------------------------------------------------------------------------------------------IniPotagerTomate-------------------------//
+
+
 void IniPotagerTomate(potager*potager){
 	tomate tomate;   	//declaration d'une tomate
 	IniTomates(&tomate);	//on lui initie ses valeurs
 	//on remplit le champ
 	for(int i=0;i<N;i++){
 		for(int j=0;j<N;j++){
+			
 			(*potager).Tomate[i][j]=tomate; //on la plante dans sa case 
 		}
 	}
 }
-
 			
 
 
-//initialisation puceron avec ses informations
+//----------------------------------------------------------------------------------------------------------------------------------------------IniPuceron----------------//
+
+
 void IniPuceron (insecte *puceron,potager *potager){
 	coord position; //contiendra la position du puceron
 	int mvt;	//contiendra le mvt du puceron
@@ -38,6 +43,8 @@ void IniPuceron (insecte *puceron,potager *potager){
 	RemplirPuceron(puceron, position,mvt,dessin); //on remplit les informations
 	
 }	
+
+//----------------------------------------------------------------------------------------------------------------------------------------RemplissagePotagerPuceron--------------------//
 
 
 void RemplissagePotagerPuceron(potager*potager){

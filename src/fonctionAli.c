@@ -179,6 +179,7 @@ void VieillissementTousPuceron(potager*potager){  /*je sais pas s'il faut rajout
 		puceron=&((*potager).EnsPuceron[i]);
 		Vieillissement1Puceron(puceron);
 	}
+	//tuer ton puceron si vie à 0
 }
 
 //Mort d'un puceron

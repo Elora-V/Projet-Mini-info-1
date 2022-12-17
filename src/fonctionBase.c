@@ -2,23 +2,9 @@
 #include "fonctionBase.h"
 
 		
-void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 ){
-	
-	//on garde en mémoire les valeurs à l'indice 1
-	int x1= tab[indice1].Position.x;
-	int y1= tab[indice1].Position.y;
-	int mvt1= tab[indice1].Mvt;
-	
-	//on met les informations de indice 2 à indice 1
-	tab[indice1]=tab[indice2];
-	
-	//on ecrit les informations de indice 1 dans indice 2
-	tab[indice2].Position.x= x1;
-	tab[indice2].Position.y= y1;
-	tab[indice2].Mvt= mvt1;
-	
-}	
+//==============================================================================================================================================================================================//
 
+//------------------------------------------------------------------------------------------------------------------------------VerifSiTomate-----------------//
 
 int VerifSiTomate(coord *position, potager* potager){
 	int flag=1;
@@ -29,6 +15,8 @@ int VerifSiTomate(coord *position, potager* potager){
 	}
 	return flag;
 }
+
+//------------------------------------------------------------------------------------------------------------------------------VerifPasPuceron-----------------//
 
 int VerifPasPuceron(coord *position ,potager *potager){
 	int flag=1;
@@ -45,16 +33,21 @@ int VerifPasPuceron(coord *position ,potager *potager){
 }
 		
 
-//position aleatoire
+//==============================================================================================================================================================================================//
+
+
+//------------------------------------------------------------------------------------------------------------------------------RandPosPuc-----------------//
+
 void RandPosPuc(coord*position){
 	(*position).x= rand()%N;
 	(*position).y=rand()%N;
 	}
 
-//position aléatoire du champ sans puceron
+//------------------------------------------------------------------------------------------------------------------------------PositionSansPuceron-----------------//
+
 void PositionSansPuceron( coord *position, potager *potager){
 	
-	if( (*potager).NbPuceronVie < 30 ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
+	if( (*potager).NbPuceronVie < N*N ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
 		int flag;
 		do{		
 			RandPosPuc(position); //position aléatoire
@@ -64,30 +57,9 @@ void PositionSansPuceron( coord *position, potager *potager){
 		printf("\nPlus de place sans puceron\n");
 	}
 }
+
+//------------------------------------------------------------------------------------------------------------------------------RemplirPuceron-----------------//
 			
-		
-		
-void TraductionMvtDessin(int mvtNb, char *mvtDessin){
-	
-	
-	*mvtDessin='<';       //a changer, par default pr tester
-	/*if (mvtNb==0){
-		mvt="<";
-		}
-	else if(mvtNb==1{
-		mvt=">";
-		}
-	else if(mvtNb==2){
-		mvt="∧";
-		}
-	else if(mvtNb==3){
-		mvt="v";
-		}                               
-		return mvt;*/
-}
-
-
-//on remplit les informations d'un puceron
 void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin){
 	
 	(*puceron).Position=position;
@@ -97,13 +69,44 @@ void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin){
 	(*puceron).DessinMvt=dessin;
 }
 
+//------------------------------------------------------------------------------------------------------------------------------AjoutPuceron-----------------//
 
 void AjoutPuceron( insecte *puceron, potager *potager){
 		(*potager).EnsPuceron[(*potager).NbPuceronVie]=*puceron;		
 		(*potager).NbPuceronVie++;	
 }
 	
+			
+//==============================================================================================================================================================================================//
 
+
+//------------------------------------------------------------------------------------------------------------------------------TraductionMvtDessin-----------------//
+		
+void TraductionMvtDessin(int Mvt, char *DessinsMvt){
+	
+	//lire le rapport pour comprendre l'association chiffre-caractère
+	
+	if(Mvt==0 || Mvt==7){
+		*DessinsMvt='\\'; /* double backslash necessaire sinon il attend la suite, comme \n ou \t, \\ indique qu'on veut le caractère \*/
+	}
+	else if(Mvt==1){
+		*DessinsMvt='^';
+	}
+	else if(Mvt==2 || Mvt==5){
+		*DessinsMvt='/';
+	}
+	else if(Mvt==3){
+		*DessinsMvt='<';
+	}
+	else if(Mvt==4){
+		*DessinsMvt='>';
+	}
+	else if(Mvt==6){
+		*DessinsMvt='v';
+	}
+}
+
+//------------------------------------------------------------------------------------------------------------------------------MotifTomate-----------------//
 
 void MotifTomate(int JRepousse,char*Maturite){
 	if(JRepousse<2){
@@ -116,6 +119,11 @@ void MotifTomate(int JRepousse,char*Maturite){
 		*Maturite='O';
 	}
 }
+
+//==============================================================================================================================================================================================//
+
+//------------------------------------------------------------------------------------------------------------------------------MortTomate-----------------//
+
 
 void MortTomate(tomate*tomate){
 	(*tomate).JRepousse=0;
