@@ -29,9 +29,11 @@ int main(){
 		printf(" \n ----------------------------------------------------------- \n                        Tour %d \n ----------------------------------------------------------- \n", t+1);
 		
 		// 1 : maturation tomate
+		MaturationTouteTomate(&potager);
 		// 2 : mouvement puceron
 		MvtTousPuceron(&potager);
 		// 3 : nourriture puceron
+		TousPuceronMange(&potager);
 		// 4 : reproduction puceron
 		// 5 : veillissement puceron
 		
