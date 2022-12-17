@@ -2,7 +2,7 @@
 #define Structure
 
 #define N 30 //taille matrice potager
-#define NbPuceron 1 //nombre puceron initial
+#define NbPuceron 10 //nombre puceron initial
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -71,8 +71,18 @@ void RemplirNNpuceron( potager* potager, char tab[N][N]){
 
 
 
-
-
+void affichageSurDemande(int affichage,potager *potager){
+		int oui_non;
+		if (affichage==1){ //si tous les affichages
+			affichePotager(potager); // on affiche le potager
+		}else if (affichage==2){ //sinon on pose la question
+			printf("\nAffichage du tour? (0:non , 1:oui)\n");
+			scanf("%d",&oui_non);
+			if(oui_non){
+				affichePotager(potager); // on affiche le potager
+			}
+		}
+}
 
 
 
