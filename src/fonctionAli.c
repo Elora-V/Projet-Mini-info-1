@@ -32,16 +32,16 @@ char RandMvt(){
 	char mvt;
 	if (mvtNb==0){
 		mvt="<";
-		}
+	}
 	else if(mvtNb==1{
 		mvt=">";
-		}
+	}
 	else if(mvtNb==2){
 		mvt="∧";
-		}
+	}
 	else if(mvtNb==3){
 		mvt="v";
-		}                                //A CHANGER
+	}                                //A CHANGER
 		return mvt;
 }
 //srand( time( NULL ) );
@@ -77,9 +77,7 @@ void RemplissagePotagerPuceron(potager*potager){
 	}
 }
 
-
-
-
+//Implémente la forme de la tomate en fontion de son jour de repousse
 void MotifTomate(int JRepousse,char*Maturite){
 	if(JRepousse<2){
 		*Maturite='.';
@@ -92,11 +90,37 @@ void MotifTomate(int JRepousse,char*Maturite){
 	}
 }
 
-void MortTomate(tomate*tomate){
-	(*tomate).JRepousse=0;
-	(*tomate).Maturite='.';
+//Assigne un symbole de mouvement à un chiffre
+void DirectionMvt(int Mvt,char DessinsMvt){
+	if(Mvt=0 || Mvt=7){
+		DessinsMvt='\';
+	}
+	else if(Mvt=1){
+		DessinsMvt='∧';
+	}
+	else if(Mvt=2 || Mvt=5){
+		DessinsMvt='/';
+	}
+	else if(Mvt=3){
+		DessinsMvt='<';
+	}
+	else if(Mvt=4){
+		DessinsMvt='>';
+	}
+	else if(Mvt=6){
+		DessinsMvt='v';
+	}
 }
 
+//Mort d'une tomate
+//Prend une tomate et renvoie son jour de repousse et son niveau de maturité
+void MortTomate(tomate*tomate){
+	(*tomate).JRepousse=0;  
+	(*tomate).Maturite='.';  
+}
+
+//Faire Maturer une tomate
+//Prend une tomate et renvoie son jour de repousse et sa maturité
 void Maturation1Tomate(tomate*tomate){
 	char*maturite;
 	(*tomate).JRepousse ++;
@@ -104,6 +128,8 @@ void Maturation1Tomate(tomate*tomate){
 	MotifTomate((*tomate).JRepousse,maturite);	
 }
 
+//Faire maturer toutes les tomates
+//Prend le potager et renvoie le niveau de maturation
 void MaturationTouteTomate(potager*potager){
 	tomate*Tomate;
 	for(int i=0;i<N;i++){
@@ -113,7 +139,9 @@ void MaturationTouteTomate(potager*potager){
 		}
 	}
 }
-				
+
+//Nourrir un puceron
+//Prend puceron et potager et renvoie si le puceron a mangé ou non
 void Puceron1Mange(insecte*puceron, potager*potager){
 	int SiTomate =VerifSiTomate((*puceron).Position, potager);
 	if (SiTomate){ 
@@ -127,6 +155,8 @@ void Puceron1Mange(insecte*puceron, potager*potager){
 	}
 }
 
+//Nourrir tous les pucerons
+//prend le potager  
 void TousPuceronMange(potager*potager){
 	insecte*puceron;
 	for(int i=0;i<(*potager).NbPuceronVie;i++){
@@ -135,25 +165,33 @@ void TousPuceronMange(potager*potager){
 	}
 }
 
+//Faire vieillir un puceron
+//Prend un puceron et renvoie ses points de vie
 void Vieillissement1Puceron(insecte*puceron){
 	(*puceron).vie=(*puceron).vie-1;
 	}
 
-void VieillissementTousPuceron(potager*potager){  /*je sais pas s'il faut rajouter EnsPuceron aussi en argumet*/
+//Faire vieillir tous les pucerons
+void VieillissementTousPuceron(potager*potager){  /*je sais pas s'il faut rajouter EnsPuceron aussi en argument*/
 	int i;
-	insecte *puceron;
+	insecte*puceron;
 	for (i=0,i<N,i++){
-		puceron=&( (*potager).EnsPuceron[i] );
+		puceron=&((*potager).EnsPuceron[i]);
 		Vieillissement1Puceron(puceron);
 	}
+}
 
-
-void MortPuceron(insecte*puceron,potager * potager){
+//Mort d'un puceron
+//Prend le potager et un puceron et modifie sa "case"
+void MortPuceron(insecte*puceron,potager*potager){
 	(*puceron).Vie=0;
-	...
+	EchangeTableau();
 }
 
-void EchangeTableau(){
+//Echanger le dernier puceron du tableau avec le puceron qui vient de mourrir
+void EchangeTableau(potager*EnsPuceron[]){
+	EnsPuceron[];
 }
+
 
 
