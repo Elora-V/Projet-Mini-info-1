@@ -53,7 +53,7 @@ void PositionSansPuceron( coord *position, potager *potager);
 	Sortie:
 	Operation:
 */
-void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin);
+void RemplirPuceron(insecte*puceron,int id,coord position, int mvt,char dessin);
 
 
 /*	Titre: AjoutPuceron

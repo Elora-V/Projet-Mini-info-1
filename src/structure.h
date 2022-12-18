@@ -20,6 +20,7 @@ typedef struct {
 //-------------------------------------------------------------------------------------------------------------------------Structure d'un insecte------------------//
 		
 typedef struct {
+		 int Id; //identifiant indiquant sa position dans le tableau
 		 coord Position;
 		 int AMange;  //nombre de jours consécutifs où le pucerion a mangé
 		 int Vie;     // vie du puceron, elle diminue de 1 à chaque tours

@@ -186,6 +186,7 @@ void reproduction1Puceron( insecte*puceron, potager *potager){
 			int caseRand=rand()% nbcase;
 			coord pos=tab[caseRand].Position;
 			int mvt=tab[caseRand].Mvt;
+			int id = (*potager).NbPuceronVie;
 			char dessin;
 			TraductionMvtDessin(mvt, &dessin); //récupère la version dessin du mouvement
 			
@@ -194,7 +195,7 @@ void reproduction1Puceron( insecte*puceron, potager *potager){
 			dessin='/';
 			
 			insecte enfant;
-			RemplirPuceron(&enfant,pos, mvt ,dessin);
+			RemplirPuceron(&enfant, id,pos, mvt ,dessin);
 			AjoutPuceron( &enfant, potager);
 			
 			//6 : s'il s'est reproduit, il devra attendre d'avoir remangé 5 tomates pour se reproduire encore une fois
