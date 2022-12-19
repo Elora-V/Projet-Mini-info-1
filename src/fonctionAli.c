@@ -183,6 +183,7 @@ void VieillissementTousPuceron(potager*potager){
 	}
 }
 
+
 //Mort d'un puceron
 //Prend le potager et un puceron et modifie sa "case"
 void MortPuceron(int identifiant,potager*potager){

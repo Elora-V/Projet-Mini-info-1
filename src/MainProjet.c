@@ -44,7 +44,7 @@ int main(){
 		// 4 : reproduction puceron
 		reproTousPuceron(&potager);
 		// 5 : veillissement puceron
-		
+		VieillissementTousPuceron(&potager);
 		// 6 : affichage potager en fonction de la réponse de l'utilisateur
 		printf( "\nIl y a %d pucerons. \n",potager.NbPuceronVie);
 		affichageSurDemande(affichage, &potager);
