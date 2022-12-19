@@ -18,7 +18,7 @@ MainProjet.o: MainProjet.c SimulationTour.h Initialisation.h Affichage.h ListeCa
 
 # compiler les sous-fichiers:--------------
 
-Simulation.o: SimulationTour.c Affichage.h ListeCaseFiltre.h fonctionBase.h structure.h
+Simulation.o: SimulationTour.c ListeCaseFiltre.h fonctionBase.h structure.h
 	$(CC) -c SimulationTour.c $(flags)
 
 Affichage.o: Affichage.c fonctionBase.h structure.h
