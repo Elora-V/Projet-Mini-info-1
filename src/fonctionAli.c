@@ -167,31 +167,38 @@ void TousPuceronMange(potager*potager){
 
 //Faire vieillir un puceron
 //Prend un puceron et renvoie ses points de vie
-void Vieillissement1Puceron(insecte*puceron){
+void Vieillissement1Puceron(insecte*puceron;potager*potager){
 	(*puceron).vie=(*puceron).vie-1;
+	if((*puceron).vie==0){
+		MortPuceron((*puceron).identifiant;potager);
 	}
+}
 
 //Faire vieillir tous les pucerons
-void VieillissementTousPuceron(potager*potager){  /*je sais pas s'il faut rajouter EnsPuceron aussi en argument*/
-	int i;
+void VieillissementTousPuceron(potager*potager){  
 	insecte*puceron;
-	for (i=0,i<N,i++){
+	for (int i=0,i<N,i++){
 		puceron=&((*potager).EnsPuceron[i]);
 		Vieillissement1Puceron(puceron);
 	}
-	//tuer ton puceron si vie à 0
 }
 
 //Mort d'un puceron
 //Prend le potager et un puceron et modifie sa "case"
-void MortPuceron(insecte*puceron,potager*potager){
-	(*puceron).Vie=0;
-	EchangeTableau();
+void MortPuceron(int identifiant,potager*potager){
+	(*potager).EnsPuceron[identifiant].Vie=0;  //mettre la vie du puceron à 0
+	EchangeTableauPuceron(potager,identifiant);  //echanger case du puceron mort avec case du dernier puceron 
+	(*potager).NbPuceronVie=(*potager).NbPuceronVie-1;  //on réduit de 1 le nombre de puceron en vie
 }
 
 //Echanger le dernier puceron du tableau avec le puceron qui vient de mourrir
-void EchangeTableau(potager*EnsPuceron[]){
-	EnsPuceron[];
+void EchangeTableauPuceron(potager*potager,int indice){
+	int dernier=(*potager).NbPuceronVie-1;
+	insecte info=(*potager).EnsPuceron[indice];
+	(*potager).EnsPuceron[indice]=(*potager).EnsPuceron[dernier];
+	(*potager).EnsPuceron[dernier]=info;
+	(*potager).EnsPuceron[indice].Id=indice;
+	(*potager).EnsPuceron[dernier].Id=dernier;
 }
 
 

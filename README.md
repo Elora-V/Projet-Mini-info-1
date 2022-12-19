@@ -4,6 +4,8 @@
 Le projet de l'UE mise à niveau en informatique 1 (algorithmique). 
 La première partie de ce fichier décrit les dossiers du dépôt, la seconde partie est un tutoriel de github pour nous, puisque c'est la première fois que nous l'utilisons.
 
+Le dossier 'Docs' contient la liste des commandes git ainsi que le rapport écrit du projet, le dossier 'src' contient tous les codes. Le rapport écrit explique la répartition des fonctions dans les différents fichiers.
+
 ----------------
 La partie suivante ne concerne pas le correcteur : 
 
