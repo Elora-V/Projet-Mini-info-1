@@ -17,66 +17,66 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 
 /*	Titre: VerifSiTomate
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse d'une position et adresse du potager
+	Sortie: 0 si il n'y a pas de tomate mûre sur la case, 1 sinon
+	Operation: regarde sur la case du potager associé à la position si la tomate est mûre
 */	
 int VerifSiTomate(coord *position, potager *potager);
 
 /*	Titre: VerifPasPuceron
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse d'une position et adresse du potager
+	Sortie: 0 si il n'y a un puceron sur la case, 1 sinon
+	Operation: parcours EnsPuceron (tableau de tous les pucerons du potager) pour regarder si la position contient un puceron ou non
 */
 int VerifPasPuceron(coord *position ,potager *potager);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 
 /*	Titre: RandPosPuc
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse d'une position
+	Sortie: modifie la position
+	Operation: modifie la position pour lui donner un x et y aléatoire
 */
 void RandPosPuc(coord*position);
 
 
 /*	Titre:PositionSansPuceron
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse d'une position et adresse du potager
+	Sortie: modifie la position
+	Operation:  modifie la position pour qu'elle ne contient pas du puceron, celle-ci est déterminée de manière aléatoirement et on vérifie qu'elle est libre 
 */
 void PositionSansPuceron( coord *position, potager *potager);
 
 
 /*	Titre: RemplirPuceron
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse du puceron, son identifiant, sa position, son mouvement et son dessin associé
+	Sortie: modifie le puceron
+	Operation: modifie le puceron pour lui donner les valeurs en arguments. La fontion sert pour initier un puceron, sa vie est mise à 10 et son nombre de jour consécutif où il a mangé à 0
 */
-void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin);
+void RemplirPuceron(insecte*puceron,int id,coord position, int mvt,char dessin);
 
 
 /*	Titre: AjoutPuceron
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: adresse du puceron et du potager
+	Sortie: modifie le potager
+	Operation: ajoute le puceron au tableau contenant les pucerons et incremente NbPuceronVie de 1
 */
 void AjoutPuceron( insecte *puceron, potager *potager);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 
 /*	Titre: TraductionMvtDessin
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: un mouvement (entier de 0 à 7) et l'adresse d'un caractère
+	Sortie: modifie le caractère
+	Operation: le caractère devient celui associé au chiffre du mouvement, par exemple 0 est associé à '\' (voir les autres correspondance sur le rapport)
 */
 void TraductionMvtDessin(int mvtNb, char *mvtdessin);
 
 
 /*	Titre: MotifTomate
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: nombre de jour depuis que la tomate est mangée et l'adresse du dessin de la tomate (caractère)
+	Sortie: modifie le dessin de la tomate
+	Operation: le caractère devient celui associé au chiffre JRepousse, par exemple 5 est associé à 'O' (voir les autres correspondance dans l'énoncé)
 */
 void MotifTomate(int JRepousse,char*Maturite);
 
@@ -84,9 +84,9 @@ void MotifTomate(int JRepousse,char*Maturite);
 
 
 /*	Titre: MortTomate
-	Entrée:
-	Sortie:
-	Operation:
+	Entrée: l'adresse d'une tomate
+	Sortie: modifie la tomate
+	Operation: met le nombre de jour depuis qu'elle a été mangé à 0 et change son dessin (caractère) par '.'
 */
 void MortTomate(tomate*tomate);
 

@@ -34,13 +34,14 @@ void IniPuceron (insecte *puceron,potager *potager){
 	coord position; //contiendra la position du puceron
 	int mvt;	//contiendra le mvt du puceron
 	char dessin;	//contiendra le dessin du puceron
+	int id= (*potager).NbPuceronVie;
 	
 	mvt=rand()%8; //on donne un mouvement au hasard
 	TraductionMvtDessin(mvt, &dessin); //on récupère sa version dessinée
 	
 	PositionSansPuceron(&position, potager); //on recupère une position sans puceron
 	
-	RemplirPuceron(puceron, position,mvt,dessin); //on remplit les informations
+	RemplirPuceron(puceron,id, position,mvt,dessin); //on remplit les informations
 	
 }	
 

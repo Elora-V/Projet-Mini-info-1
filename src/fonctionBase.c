@@ -45,7 +45,7 @@ void RandPosPuc(coord*position){
 
 //------------------------------------------------------------------------------------------------------------------------------PositionSansPuceron-----------------//
 
-void PositionSansPuceron( coord *position, potager *potager){
+void PositionSansPuceron(coord *position, potager *potager){
 	
 	if( (*potager).NbPuceronVie < N*N ){ //on ne peut pas chercher une position qui n'existe pas (boucle infini)
 		int flag;
@@ -60,8 +60,9 @@ void PositionSansPuceron( coord *position, potager *potager){
 
 //------------------------------------------------------------------------------------------------------------------------------RemplirPuceron-----------------//
 			
-void RemplirPuceron(insecte*puceron,coord position, int mvt,char dessin){
+void RemplirPuceron(insecte*puceron, int id ,coord position, int mvt,char dessin){
 	
+	(*puceron).Id=id;
 	(*puceron).Position=position;
 	(*puceron).AMange=0;
 	(*puceron).Vie=10;
