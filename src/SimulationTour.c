@@ -192,8 +192,6 @@ void reproduction1Puceron( insecte*puceron, potager *potager){
 			
 			//5 : on ajoute un puceron
 			
-			dessin='/';
-			
 			insecte enfant;
 			RemplirPuceron(&enfant, id,pos, mvt ,dessin);
 			AjoutPuceron( &enfant, potager);
@@ -219,9 +217,11 @@ void reproTousPuceron(potager*potager){
 }
 
 //Prend un puceron et renvoie ses points de vie
-void Vieillissement1Puceron(insecte*puceron,potager*potager){
-	(*puceron).vie=(*puceron).vie-1;
-	if((*puceron).vie==0){
+void Vieillissement1Puceron(insecte*puceron,potager*potager,int *mort){
+	*mort=0;
+	(*puceron).Vie = (*puceron).Vie - 1;
+	if( (*puceron).Vie <=0 ){
+		*mort=1;
 		MortPuceron((*puceron).Id,potager);
 	}
 }
@@ -229,9 +229,15 @@ void Vieillissement1Puceron(insecte*puceron,potager*potager){
 //Faire vieillir tous les pucerons
 void VieillissementTousPuceron(potager*potager){  
 	insecte*puceron;
-	for (int i=0,i<N,i++){
+	int i=0;
+	int mort;
+	while (i < (*potager).NbPuceronVie ){
 		puceron=&((*potager).EnsPuceron[i]);
-		Vieillissement1Puceron(puceron);
+		Vieillissement1Puceron(puceron,potager,&mort);
+		if (mort){
+			i--;  //si le puceron est mort, la case i contient un autre puceron, celui-ci doit aussi passer par la fonction vieillisement donc on recule i
+		}
+		i++;
 	}
 }
 

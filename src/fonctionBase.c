@@ -132,6 +132,15 @@ void MortTomate(tomate*tomate){
 
 }
 
+void MortPuceron(int identifiant,potager*potager){
+	(*potager).EnsPuceron[identifiant].Vie=0;  //mettre la vie du puceron à 0
+	if (identifiant!=(*potager).NbPuceronVie-1){
+		EchangeTableauPuceron(potager,identifiant);  //echanger case du puceron mort avec case du dernier puceron 
+	}
+	(*potager).NbPuceronVie=(*potager).NbPuceronVie-1;  //on réduit de 1 le nombre de puceron en vie
+}
+
+
 void EchangeTableauPuceron(potager*potager,int indice){
 	int dernier=(*potager).NbPuceronVie-1;
 	insecte info=(*potager).EnsPuceron[indice];
