@@ -194,6 +194,7 @@ void reproduction1Puceron( insecte*puceron, potager *potager){
 			
 			insecte enfant;
 			RemplirPuceron(&enfant, id,pos, mvt ,dessin);
+			enfant.Vie=enfant.Vie+1; //pour compenser du vieillisement prématuré dans ce tour
 			AjoutPuceron( &enfant, potager);
 			
 			//6 : s'il s'est reproduit, il devra attendre d'avoir remangé 5 tomates pour se reproduire encore une fois
