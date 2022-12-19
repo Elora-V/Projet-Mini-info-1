@@ -131,3 +131,12 @@ void MortTomate(tomate*tomate){
 
 }
 
+void EchangeTableauPuceron(potager*potager,int indice){
+	int dernier=(*potager).NbPuceronVie-1;
+	insecte info=(*potager).EnsPuceron[indice];
+	(*potager).EnsPuceron[indice]=(*potager).EnsPuceron[dernier];
+	(*potager).EnsPuceron[dernier]=info;
+	(*potager).EnsPuceron[indice].Id=indice;
+	(*potager).EnsPuceron[dernier].Id=dernier;
+}
+

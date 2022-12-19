@@ -217,9 +217,22 @@ void reproTousPuceron(potager*potager){
 
 }
 
+//Prend un puceron et renvoie ses points de vie
+void Vieillissement1Puceron(insecte*puceron,potager*potager){
+	(*puceron).vie=(*puceron).vie-1;
+	if((*puceron).vie==0){
+		MortPuceron((*puceron).Id,potager);
+	}
+}
 
-
-
+//Faire vieillir tous les pucerons
+void VieillissementTousPuceron(potager*potager){  
+	insecte*puceron;
+	for (int i=0,i<N,i++){
+		puceron=&((*potager).EnsPuceron[i]);
+		Vieillissement1Puceron(puceron);
+	}
+}
 
 
 

@@ -90,5 +90,5 @@ void MotifTomate(int JRepousse,char*Maturite);
 */
 void MortTomate(tomate*tomate);
 
-
+void EchangeTableauPuceron(potager*potager,int indice);
 #endif

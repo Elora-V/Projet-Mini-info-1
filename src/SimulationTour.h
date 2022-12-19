@@ -70,5 +70,8 @@ void reproduction1Puceron( insecte*puceron, potager *potager);
 */
 void reproTousPuceron(potager*potager);
 
+//Prend un puceron et renvoie ses points de vie
+void Vieillissement1Puceron(insecte*puceron,potager*potager);
 
+void VieillissementTousPuceron(potager*potager);
 #endif
