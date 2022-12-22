@@ -8,7 +8,7 @@
 	Cela permet aussi d'alléger les autres fichiers pour les rendre plus comprehensible.
 	
 	VerifSiTomate et VerifPasPuceron sont des fonctions de vérification.
-	RandPosPuc, PositionSansPuceron, RemplirPuceron et AjoutPuceron sont des fonctions ayant pour but de modifier un puceron.
+	PositionSansPuceron, RemplirPuceron et AjoutPuceron sont des fonctions ayant pour but de modifier un puceron.
 	TraductionMvtDessin et MotifTomate sont des fonctions qui 'traduisent' une variable en une autre quand celle-ci sont liées, ici cela les traduit en charactère pour les dessiner.
 	MortTomate est la disparition d'une tomate, elle n'est utilisé que dans une fonction mais la placer ici permet d'alleger le fichier SimulationTour qui a de nombreuses fonctions.
 */
@@ -30,14 +30,15 @@ int VerifSiTomate(coord *position, potager *potager);
 */
 int VerifPasPuceron(coord *position ,potager *potager);
 
-//--------------------------------------------------------------------------------------------------------------------------------------------//
 
-/*	Titre: RandPosPuc
-	Entrée: adresse d'une position
-	Sortie: modifie la position
-	Operation: modifie la position pour lui donner un x et y aléatoire
-*/
-void RandPosPuc(coord*position);
+
+int VerifPuceronInd(coord *position ,potager *potager, int * indice);
+
+
+//?????????????
+int VerifPasCocci(coord *position ,potager *potager);
+
+//--------------------------------------------------------------------------------------------------------------------------------------------//
 
 
 /*	Titre:PositionSansPuceron
@@ -48,13 +49,6 @@ void RandPosPuc(coord*position);
 void PositionSansPuceron( coord *position, potager *potager);
 
 
-/*	Titre: RemplirPuceron
-	Entrée: adresse du puceron, son identifiant, sa position, son mouvement et son dessin associé
-	Sortie: modifie le puceron
-	Operation: modifie le puceron pour lui donner les valeurs en arguments. La fontion sert pour initier un puceron, sa vie est mise à 10 et son nombre de jour consécutif où il a mangé à 0
-*/
-void RemplirPuceron(insecte*puceron,int id,coord position, int mvt,char dessin);
-
 
 /*	Titre: AjoutPuceron
 	Entrée: adresse du puceron et du potager
@@ -63,6 +57,27 @@ void RemplirPuceron(insecte*puceron,int id,coord position, int mvt,char dessin);
 */
 void AjoutPuceron( insecte *puceron, potager *potager);
 
+// ?????????????????????
+
+
+void MortPuceron(int identifiant,potager*potager);
+
+
+//???????????????
+void EchangeTableauPuceron(potager*potager,int indice);
+
+//--------------------------------------------------------------------------------------------------------------------------------------------//
+
+
+void PositionSansCocci(coord *position, potager *potager);
+
+void AjoutCocci( insecte *cocci, potager *potager);
+
+
+void MortCocci(int identifiant,potager*potager);
+
+
+void EchangeTableauCocci(potager*potager,int indice);
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 
 /*	Titre: TraductionMvtDessin
@@ -90,8 +105,20 @@ void MotifTomate(int JRepousse,char*Maturite);
 */
 void MortTomate(tomate*tomate);
 
+/*	Titre: RandPosPuc
+	Entrée: adresse d'une position
+	Sortie: modifie la position
+	Operation: modifie la position pour lui donner un x et y aléatoire
+*/
+void RandPos(coord*position);
 
-void MortPuceron(int identifiant,potager*potager);
+/*	Titre: RemplirInsecte
+	Entrée: adresse du puceron, son identifiant, sa position, son mouvement et son dessin associé
+	Sortie: modifie le puceron
+	Operation: modifie le puceron pour lui donner les valeurs en arguments. La fontion sert pour initier un puceron, sa vie est mise à 10 et son nombre de jour consécutif où il a mangé à 0
+*/
+void RemplirInsecte(insecte*puceron,int id,coord position, int mvt,char dessin,int vie);
 
-void EchangeTableauPuceron(potager*potager,int indice);
+
+
 #endif

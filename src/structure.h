@@ -2,7 +2,8 @@
 #define Structure
 
 #define N 30 //taille matrice potager
-#define NbPuceron 10 //nombre puceron initial
+#define NbPuceron 50 //nombre puceron initial
+#define NbCocci 10 //nombre de coccinelle initial
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,6 +47,8 @@ typedef struct {
 		tomate Tomate[N][N];   //le potager avec les informations des tomates        
 		insecte EnsPuceron[N*N]; //ensemble des pucerons dans le potager
 		int NbPuceronVie;      //nombre de puceron en vie
+		insecte EnsCoccinelle[N*N]; //ensemble des coccinelle dans le potager
+		int NbCoccinelleVie;      //nombre de coccinelle en vie
 		
 		}potager;
 		

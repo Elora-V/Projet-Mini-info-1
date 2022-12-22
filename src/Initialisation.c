@@ -41,7 +41,7 @@ void IniPuceron (insecte *puceron,potager *potager){
 	
 	PositionSansPuceron(&position, potager); //on recupère une position sans puceron
 	
-	RemplirPuceron(puceron,id, position,mvt,dessin); //on remplit les informations
+	RemplirInsecte(puceron,id, position,mvt,dessin,10); //on remplit les informations
 	
 }	
 
@@ -58,6 +58,43 @@ void RemplissagePotagerPuceron(potager*potager){
 	
 		IniPuceron (&puceron,potager);
 		AjoutPuceron(&puceron, potager); //ajout du puceron dans le champ	
+		
+	}
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------IniCocci----------------//
+
+
+void IniCocci (insecte *cocci,potager *potager){
+	coord position; //contiendra la position de la coccinelle
+	int mvt;	//contiendra le mvt de la coccinelle
+	char dessin;	//contiendra le dessin de la coccinelle
+	int id= (*potager).NbCoccinelleVie;
+	
+	mvt=rand()%8; //on donne un mouvement au hasard
+	TraductionMvtDessin(mvt, &dessin); //on récupère sa version dessinée
+	
+	PositionSansCocci(&position, potager); //on recupère une position sans coccinelles
+	
+	RemplirInsecte(cocci,id, position,mvt,dessin,20); //on remplit les informations
+	
+}	
+
+//----------------------------------------------------------------------------------------------------------------------------------------RemplissagePotagerCocci--------------------//
+
+
+void RemplissagePotagerCocci(potager*potager){
+	
+	insecte cocci;		//declaration d'une coccinelle
+	(*potager).NbCoccinelleVie=0;      //initie le nombre de coccinelle dans le champ à 0
+				
+	//on veut mettre NbCocci dans le champ:
+	for(int i=0;i<NbCocci;i++){
+	
+		IniCocci(&cocci,potager);
+		AjoutCocci(&cocci, potager); //ajout de la coccinelle dans le champ	
 		
 	}
 }
