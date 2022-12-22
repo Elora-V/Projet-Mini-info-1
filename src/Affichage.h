@@ -26,7 +26,7 @@ void TabNNespace(char tab[N][N]);
 */
 void RemplirNNpuceron( potager * potager, char tab[N][N]);
 
-
+void RemplirNNcocci( potager* potager, char tab[N][N]);
 
 /*	Titre : affichePotager
 	Entrée: adresse du potager

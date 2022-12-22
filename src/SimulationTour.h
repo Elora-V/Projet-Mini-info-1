@@ -75,5 +75,30 @@ void Vieillissement1Puceron(insecte*puceron,potager*potager,int *mort);
 
 void VieillissementTousPuceron(potager*potager);
 
+//-----------------------------------------------------------------------------------------------------------------------//
+
+void Cocci1Mange(insecte*cocci, potager*potager);
+
+void TousCocciMange(potager*potager);
+
+//-----------------------------------------------------------------------------------------------------------------------//
+
+void Mvt1Cocci( insecte*cocci, potager *potager);
+
+void MvtTousCocci(potager *potager);
+
+//-----------------------------------------------------------------------------------------------------------------------//
+
+void reproduction1Cocci( insecte*cocci, potager *potager);
+
+void reproTousCocci(potager*potager);
+
+//-----------------------------------------------------------------------------------------------------------------------//
+
+void Vieillissement1Cocci(insecte*cocci,potager*potager,int *mort);
+
+void VieillissementTousCocci(potager*potager);
+
 
 #endif
+

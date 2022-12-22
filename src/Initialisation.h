@@ -41,7 +41,9 @@ void IniPuceron (insecte *puceron,potager *potager);
 */
 void RemplissagePotagerPuceron(potager*potager);
 
+void IniCocci (insecte *cocci,potager *potager);
 
+void RemplissagePotagerCocci(potager*potager);
 
 
 #endif
