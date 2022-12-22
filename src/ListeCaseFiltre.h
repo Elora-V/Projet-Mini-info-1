@@ -33,6 +33,8 @@ void CasesApresMvt(coord *cases, coord *position, int *mvt);
 int listaNCase(coord position , int n , caseMvt tab[]);
 
 
+void ChoixCaseTabPosition(int nbcase, caseMvt tab[], insecte *Insecte );
+
 /*	Titre : filtreCaseSansPuc
 	Entrée: tableau modifié par la fonction listaNCase, taille de ce tableau (sortie de la fonction listaNCase) et le potager
 	Sortie: change le tableau 
@@ -40,6 +42,10 @@ int listaNCase(coord position , int n , caseMvt tab[]);
 */
 void filtreCaseSansPuc( caseMvt tab[], int *nbCaseRempli , potager* potager);
 
+void filtreCaseAvecPuc( caseMvt tab[], int * nbCaseRempli , potager *potager);
+
+
+void filtreCaseSansCocci( caseMvt tab[], int * nbCaseRempli , potager *potager);
 
 /*	Titre : filtreCaseAvecTomate
 	Entrée: tableau modifié par la fonction listaNCase, taille de ce tableau (sortie de la fonction listaNCase) et le potager
@@ -49,12 +55,19 @@ void filtreCaseSansPuc( caseMvt tab[], int *nbCaseRempli , potager* potager);
 void filtreCaseAvecTomate( caseMvt tab[], int *nbCaseRempli , potager *potager);
 
 
+
+void filtreCaseMvtVersPuc( caseMvt tabPuc[], int * nbCasePuc , caseMvt tabLibre[], int *nbCaseLibre);
+
+
 /*	Titre : EchangeTabCaseMvt
 	Entrée: tableau de structure caseMvt (position et mouvement associé) ainsi que les deux indices des cases à interchanger
 	Sortie: change le tableau
 	Operation: recopie les informations de la case 1 en mémoire, mets les informations de la case 2 dans la case 1 et recopie les informations gardées en mémoire de la case 1 dans la case 2
 */
 void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 );
+
+
+void CopieTableauMvt(caseMvt tab1[],int nbcase1, caseMvt tab2[],int *nbcase2 );
 
 
 

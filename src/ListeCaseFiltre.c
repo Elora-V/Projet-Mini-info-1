@@ -134,8 +134,25 @@ int listaNCase(coord position , int  n , caseMvt tab[]){
 }	
 	
 
-//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseSansPuc------------------//
+//----------------------------------------------------------------------------------------------------------------------------------------------ChoixCaseTabPosition------------------//
 
+
+void ChoixCaseTabPosition(int nbcase, caseMvt tab[], insecte *Insecte ){
+
+	int caseRand=rand()%nbcase; //choix au hasard de la case
+	caseMvt CaseChoisi= tab[caseRand];
+	(*Insecte).Position=CaseChoisi.Position; //prend sa position
+	int mvt=CaseChoisi.Mvt; 
+	(*Insecte).Mvt=mvt; //prend son mouvement
+	char dessin;
+	TraductionMvtDessin(mvt, &dessin); //recupère le dessin du mouvement
+	(*Insecte).DessinMvt= dessin; //prend le dessin
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseSansPuc------------------//					
 	
 void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 	int booleen;
@@ -149,7 +166,7 @@ void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 		
 		if( !booleen ){ //si il y a un puceron :
 			
-			// 1: on échange notre case avec déjà un puceron avec la dernière du tableau (si ce n'est pas la meme)
+			// 1: on échange notre case avec la dernière du tableau (si ce n'est pas la meme)
 			if (i!= *nbCaseRempli-1){ 
 				EchangeTabCaseMvt(tab, i, *nbCaseRempli-1); 
 			}
@@ -157,6 +174,64 @@ void filtreCaseSansPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
 			*nbCaseRempli=*nbCaseRempli-1;
 			                            
 			// 3 :on voudra verifier que la case mise à la place n'a pas de puceron, donc on recule d'un cran dans le tableau
+			i--; 	
+		}		
+		i++;		
+	}
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseAvecPuc------------------//
+
+	
+void filtreCaseAvecPuc( caseMvt tab[], int * nbCaseRempli , potager *potager){
+	int booleen;
+	int i=0;
+	coord *pos;
+	
+	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
+		
+		pos=&(tab[i].Position); //pos est un pointeur, on lui donne une adresse
+		booleen=VerifPasPuceron(pos,potager); //potager est un pointeur, donc pas &potager
+		
+		if( booleen ){ //si il y a pas de puceron :
+			
+			// 1: on échange notre case avec la dernière du tableau (si ce n'est pas la meme)
+			if (i!= *nbCaseRempli-1){ 
+				EchangeTabCaseMvt(tab, i, *nbCaseRempli-1); 
+			}
+			// 2: on indique qu'on a une case rempli en moins
+			*nbCaseRempli=*nbCaseRempli-1;
+			                            
+			// 3 :on voudra verifier que la case mise à la place a un puceron, donc on recule d'un cran dans le tableau
+			i--; 	
+		}		
+		i++;		
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseSansCocci------------------//
+	
+void filtreCaseSansCocci( caseMvt tab[], int * nbCaseRempli , potager *potager){
+	int booleen;
+	int i=0;
+	coord *pos;
+	
+	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
+		
+		pos=&(tab[i].Position); //pos est un pointeur, on lui donne une adresse
+		booleen=VerifPasCocci(pos,potager); //potager est un pointeur, donc pas &potager
+		
+		if( !booleen ){ //si il y a une coccinelle :
+			
+			// 1: on échange notre case avec déjà un puceron avec la dernière du tableau (si ce n'est pas la meme)
+			if (i!= *nbCaseRempli-1){ 
+				EchangeTabCaseMvt(tab, i, *nbCaseRempli-1); 
+			}
+			// 2: on indique qu'on a une case rempli en moins
+			*nbCaseRempli=*nbCaseRempli-1;
+			                            
+			// 3 :on voudra verifier que la case mise à la place n'a pas de coccinelle, donc on recule d'un cran dans le tableau
 			i--; 	
 		}		
 		i++;		
@@ -172,12 +247,10 @@ void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager)
 	coord *pos;
 	
 	while(i< *nbCaseRempli ){ //i parcourt le tableau, il ne doit pas dépasser celui-ci
-		
-		
+				
 		pos=&(tab[i].Position); //adresse de la position
 		booleen=VerifSiTomate(pos,potager);
-		
-		
+				
 		if( !booleen ){ //si il y a pas de tomate :
 			
 			
@@ -188,13 +261,46 @@ void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager)
 			// 2: on indique qu'on a une case rempli en moins
 			
 			*nbCaseRempli=*nbCaseRempli-1;
-			
-			                            
-			// 3 :on voudra verifier que la case mise à la place n'a pas de puceron, donc on recule d'un cran dans le tableau
+						                            
+			// 3 :on voudra verifier que la case mise à la place a une tomate, donc on recule d'un cran dans le tableau
 			i--; 
 			
 		}
 		
+		i++;		
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------filtreCaseMvtVersPuc------------------//
+	
+void filtreCaseMvtVersPuc( caseMvt tabPuc[], int * nbCasePuc , caseMvt tabLibre[], int *nbCaseLibre){
+	int MvtVersPuc; 
+	int i=0;
+	coord *pos;
+	
+	while(i< *nbCaseLibre ){ //i parcourt le tableau à filtrer (celui avec les cases à une distance de 1) , il ne doit pas dépasser celui-ci
+		
+		MvtVersPuc = 0; //le mouvement n'est pas vers un puceron par default
+		for (int j=0;j< *nbCasePuc;j++){ //on parcours le tableau qui indique les cases avec des pucerons
+			if (tabPuc[i].Mvt == tabLibre[j].Mvt){
+				MvtVersPuc =1; // si on trouve une case avec le même mouvement dans les tableaux, alors le mouvement amène vers une case libre et vers un puceron
+						
+			}
+		}
+		
+		if( !MvtVersPuc ){ //si pas vers un puceron on enleve la case
+			
+			// 1: echange case avec la dernière
+			if (i!= *nbCaseLibre-1){ 
+				EchangeTabCaseMvt(tabLibre, i, *nbCaseLibre-1); 
+			}
+			// 2: on indique qu'on a une case rempli en moins
+			*nbCaseLibre=*nbCaseLibre-1;
+			                            
+			// 3 :on voudra verifier que la case mise à la place est en direction d'un puceron, donc on recule d'un cran dans le tableau
+			i--; 	
+		}		
 		i++;		
 	}
 }
@@ -205,20 +311,25 @@ void filtreCaseAvecTomate( caseMvt tab[], int * nbCaseRempli , potager *potager)
 void EchangeTabCaseMvt( caseMvt tab[] , int indice1 , int indice2 ){
 	
 	//on garde en mémoire les valeurs à l'indice 1
-	int x1= tab[indice1].Position.x;
-	int y1= tab[indice1].Position.y;
-	int mvt1= tab[indice1].Mvt;
+	caseMvt infoCase1=tab[indice1];
 	
 	//on met les informations de indice 2 à indice 1
 	tab[indice1]=tab[indice2];
 	
 	//on ecrit les informations de indice 1 dans indice 2
-	tab[indice2].Position.x= x1;
-	tab[indice2].Position.y= y1;
-	tab[indice2].Mvt= mvt1;
+	tab[indice2]=infoCase1;
 	
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------CopieTableauMvt------------------//
+
+void CopieTableauMvt(caseMvt tab1[],int nbcase1, caseMvt tab2[],int *nbcase2 ){
+	
+	*nbcase2=nbcase1;
+	for (int i=0; i< nbcase1;i++){
+		tab2[i]=tab1[i];
+	}	
+}
 
 
 
