@@ -26,10 +26,11 @@ void Maturation1Tomate(tomate*tomate);
 void MaturationTouteTomate(potager*potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
+
 /*	Titre : Puceron1Mange
 	Entrée: adresse d'un puceron et du potager
 	Sortie: modifie le puceron et le potager
-	Operation: si le puceron est sur une case avec tomate, la tomate est mangé (on applique MortTomate du fihier fonctionBase) et le nombre de jours consécutifs où le puceron à mangé est incrementé de 1
+	Operation: si le puceron est sur une case avec tomate, la tomate est mangé (on applique MortTomate du fihier fonctionBase) et le nombre de jours consécutifs où le puceron a mangé est incrementé de 1
 */
 void Puceron1Mange(insecte*puceron, potager*potager);
 
@@ -41,6 +42,7 @@ void Puceron1Mange(insecte*puceron, potager*potager);
 void TousPuceronMange(potager*potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
+
 /*	Titre : Mvt1Puceron
 	Entrée: adresse du puceron et du potager
 	Sortie: modifie le potager et le puceron
@@ -56,6 +58,8 @@ void Mvt1Puceron( insecte*puceron, potager *potager);
 void MvtTousPuceron(potager *potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
+
+
 /*	Titre : reproduction1Puceron
 	Entrée: adresse du puceron et du potager
 	Sortie: modifie le potager et le puceron
@@ -70,33 +74,93 @@ void reproduction1Puceron( insecte*puceron, potager *potager);
 */
 void reproTousPuceron(potager*potager);
 
-//Prend un puceron et renvoie ses points de vie
+//-----------------------------------------------------------------------------------------------------------------------//
+
+/*	Titre : Vieillissement1Puceron
+	Entrée: adresse du puceron, du potager et d'un booléen 'mort'
+	Sortie: modifie le potager et 'mort'
+	Operation: réduit la vie du puceron de 1, si sa vie tombe à 0 il meurt, 'mort' vaut 1 dans le cas où le puceron est mort (0 sinon)
+*/
 void Vieillissement1Puceron(insecte*puceron,potager*potager,int *mort);
 
+
+/*	Titre : VieillissementTousPuceron
+	Entrée: adresse du potager
+	Sortie: modifie le potager 
+	Operation: applique Vieillissement1Puceron a tous les pucerons du potager
+*/
 void VieillissementTousPuceron(potager*potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
+
+/*	Titre : Cocci1Mange
+	Entrée: adresse de la coccinelle et du potager
+	Sortie: modifie la coccinelle et le potager
+	Operation: si la coccinelle est sur une case avec puceron, le puceron est mangé (on applique MortPuceron du fihier fonctionBase) et le nombre de jours où la coccinelle a mangé est incrementé de 1
+*/
 void Cocci1Mange(insecte*cocci, potager*potager);
 
+
+/*	Titre : TousCocciMange
+	Entrée: adresse du potager
+	Sortie: modification du potager
+	Operation: applique la fonction Cocci1Mange à toutes les coccinelles
+*/
 void TousCocciMange(potager*potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
+
+/*	Titre : Mvt1Cocci
+	Entrée: adresse de la coccinelle et du potager
+	Sortie: modifie le potager et la coccinelle
+	Operation: Si en continuant son mouvement la coccinelle atterit sur une case avec puceron elle y va, sinon elle va sur une case attenante en direction d'un puceron au hasard. Si aucune case 	sans coccinelles n'est disponible, elle ne bouge pas. Si aucune case vers un puceron n'est disponible elle va sur une case attenante sans coccinelle. La coccinelle regardera d'abord les pucerons disponibles à une distance de 1 case, puis de 2 et de 3. Si une coccinelle lui bloque le passage en direction d'un puceron elle va aller vers un autre puceron.
+*/
 void Mvt1Cocci( insecte*cocci, potager *potager);
 
+
+/*	Titre : MvtTousCocci
+	Entrée: adresse du potager
+	Sortie: modifie le potager
+	Operation: applique Mvt1Cocci a toutes les coccinelles du potager
+*/
 void MvtTousCocci(potager *potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
+
+/*	Titre : reproduction1Cocci
+	Entrée: adresse de la coccinelle et du potager
+	Sortie: modifie le potager et la coccinelle
+	Operation: si la coccinelle à mangé pendant 3 tours elle essaie de se reproduire. Si il n'y a aucune case sans coccinelle autour d'elle, elle ne se reproduit pas (pas la place pour l'enfant), sinon on ajoute une nouvelle coccinelle sur une case attentant sans coccinelless aléatoirement. En effet, on ne peut pas avoir 2 coccinelles sur la même case.
+*/
 void reproduction1Cocci( insecte*cocci, potager *potager);
 
+
+/*	Titre : reproTousCocci
+	Entrée: adresse du potager
+	Sortie: modifie le potager
+	Operation: applique reproduction1Cocci a toutes les coccinelles du potager qui ne sont pas nouvelles (présente au tour précédent)
+*/
 void reproTousCocci(potager*potager);
 
 //-----------------------------------------------------------------------------------------------------------------------//
 
+
+/*	Titre : Vieillissement1Cocci
+	Entrée: adresse de la coccinelle, du potager et d'un booléen 'mort'
+	Sortie: modifie le potager et 'mort'
+	Operation: réduit la vie de la coccinelle de 1, si sa vie tombe à 0 elle meurt, 'mort' vaut 1 dans le cas où la coccinelle est morte (0 sinon)
+*/
 void Vieillissement1Cocci(insecte*cocci,potager*potager,int *mort);
 
+
+/*	Titre : VieillissementTousCocci
+	Entrée: adresse du potager
+	Sortie: modifie le potager 
+	Operation: applique Vieillissement1Cocci a toutes les coccinelles du potager
+*/
 void VieillissementTousCocci(potager*potager);
 
 

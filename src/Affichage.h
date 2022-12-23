@@ -6,7 +6,7 @@
 
 /* Description générale de ce fichier :
 	Ce fichier contient les fonctions qui affiche le potager.
-	TabNNespace et RemplirNNPuceron permettent de récupérer un tableau du format du potager avec les informations des pucerons.
+	TabNNespace, RemplirNNPuceron et RemplirNNcocci permettent de récupérer un tableau du format du potager avec les informations des pucerons et coccinelles.
 	affichagePotager et affichageSurDemande permettent l'affichage du potager.
 	
 */
@@ -26,6 +26,12 @@ void TabNNespace(char tab[N][N]);
 */
 void RemplirNNpuceron( potager * potager, char tab[N][N]);
 
+
+/*	Titre : RemplirNNcocci
+	Entrée: adresse du potager et un tableau d'espace (on utilise la fonction TabNNespace pour l'obtenir)
+	Sortie: modifie le tableau
+	Operation: le caractère espace est remplacé par le caractère des coccinelles de EnsCoccinelle (du potager) à leur position
+*/
 void RemplirNNcocci( potager* potager, char tab[N][N]);
 
 /*	Titre : affichePotager
