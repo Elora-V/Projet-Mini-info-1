@@ -342,10 +342,10 @@ void Mvt1Cocci( insecte*cocci, potager *potager){
 			 		// 5 : Cas n=2 (on a besoin de regarder plus loin) -----------------------------------
 			 		nbcase=listaNCase( (*cocci).Position, 2 , tab); //récupère la longueur de la 'liste' et la 'liste' (tableau) des cases à une distance 2 de la coccinelle
 					filtreCaseAvecPuc(tab,&nbcase,potager); // enleve cases sans pucerons
-					if ( nbcase!=0) { 
+					if ( nbcase!=0) { //si il y au moins un puceron
 						
 						CopieTableauMvt(tabLibre,nbcaseLibre, tabInter,&nbcaseInter ); //le tableau inter prend la valuer de tabLibre
-						filtreCaseMvtVersPuc( tab, & nbcase,  tabInter,&nbcaseInter); //on filtre le tableau de case à une distance 1, on garde celles qui vont vers un puceron
+						filtreCaseMvtVersPuc( tab, & nbcase,  tabInter,&nbcaseInter); //on filtre le tableau de case à une distance 1 (tabInter), on garde celles qui vont vers un puceron
 						if (nbcaseInter != 0) { // si on peut se diriger vers un puceron sans être déranger par une coccinelle sur le chemin : on y va
 							
 							ChoixCaseTabPosition( nbcaseInter, tabInter, cocci ); //change la coccinelle de position en prenant une case au hasard dans le tableau
@@ -368,11 +368,11 @@ void Mvt1Cocci( insecte*cocci, potager *potager){
 				 				
 				 				ChoixCaseTabPosition( nbcaseInter, tabInter, cocci ); //change la coccinelle de position en prenant une case au hasard dans le tableau
 								
-							}else{ //si on est deranger par coccinelle on va sur une case disponibles à coté au hasard
+							}else{ //si on est derangé par une coccinelle, on va sur une case disponible attenante au hasard
 							
 								ChoixCaseTabPosition( nbcaseLibre, tabLibre, cocci ); //change la coccinelle de position en prenant une case libre au hasard dans le tableau de distance 1
 							}
-			 			} else { // si il y a pas de puceron à 3 cases, on va sur une case disponibles à coté au hasard
+			 			} else { // si il y a pas de pucerons à 3 cases, on va sur une case disponible attenante au hasard
 			 	
 							ChoixCaseTabPosition( nbcaseLibre, tabLibre, cocci ); //change la coccinelle de position en prenant une case libre au hasard dans le tableau de distance 1
 						}
@@ -456,7 +456,7 @@ void reproTousCocci(potager*potager){
 
 //=====================================================================================================================================================//
 
-//---------------------------------------------------------------------------------------------------------Vieillissement1Puceron--------------------//
+//---------------------------------------------------------------------------------------------------------Vieillissement1Cocci--------------------//
 
 void Vieillissement1Cocci(insecte*cocci,potager*potager,int *mort){
 	*mort=0;
@@ -467,7 +467,7 @@ void Vieillissement1Cocci(insecte*cocci,potager*potager,int *mort){
 	}
 }
 
-//---------------------------------------------------------------------------------------------------------VieillissementTousPuceron--------------------//
+//---------------------------------------------------------------------------------------------------------VieillissementTousCocci--------------------//
 
 void VieillissementTousCocci(potager*potager){  
 	insecte*cocci;

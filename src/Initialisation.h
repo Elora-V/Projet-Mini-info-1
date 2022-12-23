@@ -41,8 +41,21 @@ void IniPuceron (insecte *puceron,potager *potager);
 */
 void RemplissagePotagerPuceron(potager*potager);
 
+
+
+/*	Titre : IniCocci
+	Entrée: adresse d'une coccinelle et du potager
+	Sortie: modifie la coccinelle
+	Operation: initie les valeurs de la coccinelle (la position et le mouvement de manière aléatoire), la position doit être sans coccinelle (on ne veut pas 2 coccinelles au même endroit)
+*/
 void IniCocci (insecte *cocci,potager *potager);
 
+
+/*	Titre : RemplissagePotagerCocci
+	Entrée: adresse du potager
+	Sortie: modifie le potager (EnsCoccinelle)
+	Operation: applique la fonction iniCocci et place la coccinelle dans le potager, on fait cette action NbCocci fois (nombre de coccinelle à placer dans le potager en début de partie)
+*/
 void RemplissagePotagerCocci(potager*potager);
 
 

@@ -73,7 +73,7 @@ int main(){
 		affichageSurDemande(affichage, &potager);
 		
 		
-		// 7 :incrémentation nombre de tour
+		// 10 :incrémentation nombre de tour
 		t++;	
 	
 	}
