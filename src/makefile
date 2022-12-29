@@ -21,7 +21,7 @@ MainProjet.o: MainProjet.c SimulationTour.h Initialisation.h Affichage.h ListeCa
 Simulation.o: SimulationTour.c ListeCaseFiltre.h fonctionBase.h structure.h
 	$(CC) -c SimulationTour.c $(flags)
 
-Affichage.o: Affichage.c fonctionBase.h structure.h
+Affichage.o: Affichage.c structure.h
 	$(CC) -c Affichage.c $(flags)
 
 ListeCase.o: ListeCaseFiltre.c fonctionBase.h structure.h

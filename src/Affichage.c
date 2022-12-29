@@ -1,5 +1,4 @@
 #include "Affichage.h" 
-#include "fonctionBase.h"
 #include "structure.h"
 
 
@@ -53,6 +52,7 @@ void affichePotager(potager *potager){
 	
 	printf("\n");  
 	char tomate; //le caractère de la tomate
+	int jourT; //jour de repousse de la tomate
 	char p; //le caractère du puceron
 	char c; //le caractère de la coccinelle
 	char tabPuceron[N][N]; // tableau du format du potager, il contiendra les caractères des pucerons
@@ -68,14 +68,21 @@ void affichePotager(potager *potager){
 		
 		for (int j=0;j<N;j++){
 			tomate=(*potager).Tomate[i][j].Maturite;
+			jourT=(*potager).Tomate[i][j].JRepousse;
 			p=tabPuceron[i][j];
 			c=tabCocci[i][j];
 			//on affiche :
 			printf("\033[47;31m%c",c); //couleur rouge pour coccinelles
-			if (tomate=='O'){
-				printf("\033[47;31m%c",tomate);//couleur rouge pour tomate 
-			}else{
-				printf("\033[47;32m%c",tomate);//couleur verte pour tomate 
+			if (jourT>=20){
+				printf("\033[38;2;250;39;39m%c",tomate);//couleur rouge pour tomate 
+			}else if (jourT>=15) {
+				printf("\033[38;2;255;102;13m%c",tomate);//couleur rouge clair pour tomate 
+			}else  if (jourT>=10){
+				printf("\033[38;2;255;158;51m%c",tomate);//couleur orange pour tomate 
+			} else  if (jourT>=5){
+				printf("\033[38;2;60;170;5m%c",tomate);//couleur verte pour tomate 
+			} else{
+				printf("\033[38;2;89;170;98m%c",tomate);//couleur vert sombre pour tomate 
 			}
 			printf("\033[47;32m%c ",p); //couleur verte pour pucerons
 			printf("\033[0m"); //remet la couleur normale
@@ -90,11 +97,11 @@ void affichePotager(potager *potager){
 
 //------------------------------------------------------------------------------------------------------------------------------affichageSurDemande------------------------//
 
-void affichageSurDemande(int affichage,potager *potager){
+void affichageSurDemande(int *affichage,potager *potager){
 		int oui_non;
-		if (affichage==1){ //si tous les affichages
+		if (*affichage==1){ //si tous les affichages
 			affichePotager(potager); // on affiche le potager
-		}else if (affichage==2){ //sinon on pose la question
+		}else if (*affichage==2){ //sinon on pose la question
 			printf("\nAffichage du tour? (0:non , 1:oui)\n");
 			scanf("%d",&oui_non);
 			if(oui_non){
@@ -102,6 +109,28 @@ void affichageSurDemande(int affichage,potager *potager){
 			}
 		}
 }
+
+
+//------------------------------------------------------------------------------------------------------------------------------AfficheNbTomateMure------------------------//
+
+
+void AfficheNbTomateMure( potager*potager ){
+	int compte=0;
+	for (int i=0;i<N;i++){
+		for (int j=0;j<N;j++){
+			if ( (*potager).Tomate[i][j].Maturite == 'O' ){
+				compte++;
+			}	
+		}
+	}
+	printf ( "\n Il y a %d tomates mures, c'est-à-dire qu'il reste %d%% des tomates mures.\n",compte, compte *100 /(N*N) );
+
+}
+
+
+
+
+
 
 
 
