@@ -2,12 +2,13 @@
 
 
 Le projet de l'UE mise à niveau en informatique 1 (algorithmique). 
-La première partie de ce fichier décrit les dossiers du dépôt, la seconde partie est un tutoriel de github pour nous, puisque c'est la première fois que nous l'utilisons.
 
 Le dossier 'Docs' contient la liste des commandes git ainsi que le rapport écrit du projet, le dossier 'src' contient tous les codes. Le rapport écrit explique la répartition des fonctions dans les différents fichiers.
+Le code n'affichais pas les même erreurs dans nos deux ordinateurs, c'est pour cela qu'un Docker est réalisé pour essayer d'éviter que le code ne tourne pas chez quelqu'un en focntion de l'environnement. Le début du Dockerfile est le 'vrai' dockerfile, la suite en commentaire est la liste de commande à executer pour y accéder et faire tourner le programme.
+
 
 ----------------
-La partie suivante ne concerne pas le correcteur : 
+La partie suivante ne concerne pas le correcteur, il s'agit d'un tutoriel github (puisque c'est la première fois qu'on en utilise un) : 
 
 ## Tuto github
 ### Récupération de ce dossier sur ton ordi

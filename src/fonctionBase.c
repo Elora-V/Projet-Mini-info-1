@@ -194,10 +194,10 @@ void TraductionMvtDessin(int Mvt, char *DessinsMvt){
 //------------------------------------------------------------------------------------------------------------------------------MotifTomate-----------------//
 
 void MotifTomate(int JRepousse,char*Maturite){
-	if(JRepousse<2){
+	if(JRepousse<4){
 		*Maturite='.';
 	}
-	else if (JRepousse>=2 && JRepousse<5){
+	else if (JRepousse>=4 && JRepousse<20){
 		*Maturite='o';
 	}
 	else{
