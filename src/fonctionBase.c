@@ -10,7 +10,7 @@ int VerifSiTomate(coord *position, potager* potager){
 	int flag=1;
 	int x= (*position).x;
 	int y= (*position).y;
-	if ( (*potager).Tomate[x][y].JRepousse <5 ){ //si la tomate est non mure
+	if ( (*potager).Tomate[x][y].JRepousse <5 ){ //si la tomate est présente
 		flag=0;
 	}
 	return flag;
@@ -194,10 +194,10 @@ void TraductionMvtDessin(int Mvt, char *DessinsMvt){
 //------------------------------------------------------------------------------------------------------------------------------MotifTomate-----------------//
 
 void MotifTomate(int JRepousse,char*Maturite){
-	if(JRepousse<4){
+	if(JRepousse<=4){
 		*Maturite='.';
 	}
-	else if (JRepousse>=4 && JRepousse<20){
+	else if (JRepousse>=5 && JRepousse<20){
 		*Maturite='o';
 	}
 	else{
