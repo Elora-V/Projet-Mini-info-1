@@ -48,6 +48,14 @@ void affichePotager(potager *potager);
 	Sortie: affiche le potager en fonction de la demande de l'utilisateur
 	Operation: si affichage vaut 1 le potager est affiché, si affichage vaut 2 le programme demande à l'utilisateur s'il veut l'afficher, tout autre chiffre n'affiche pas le potager
 */
-void affichageSurDemande(int affichage,potager*potager);
+void affichageSurDemande(int *affichage,potager *potager);
+
+
+/*	Titre : AfficheNbTomateMure
+	Entrée: l'adresse du potager
+	Sortie: affiche le nombre de tomates mûres dans le potager (tomate symbolisé par 'O')
+	Operation: parcours le potager de tomate et incremente le compteur de 1 si le dessin de la tomate est 'O'
+*/
+void AfficheNbTomateMure( potager*potager );
 
 #endif

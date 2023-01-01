@@ -2,8 +2,8 @@
 #include "fonctionBase.h" 
 #include "Initialisation.h"
 #include "ListeCaseFiltre.h"
-#include "Affichage.h"
 #include "SimulationTour.h"
+#include "Affichage.h"
 
 
 int main(){
@@ -34,7 +34,8 @@ int main(){
 		TousCocciMange(&potager); //mange puceron si sur une case avec puceron
 	}
 	printf( "\nEtat initial du potager : il y a %d pucerons et %d coccinelles. \n",potager.NbPuceronVie, potager.NbCoccinelleVie);
-	affichageSurDemande(affichage, &potager); // on affiche le potager
+	
+	affichageSurDemande(&affichage, &potager); // on affiche le potager
 
 	
 	//simulation des tours-----------------------------------------------------
@@ -68,10 +69,10 @@ int main(){
 		TousCocciMange(&potager); // si ils arrivent sur une case avec coccinelle
 		// 8 : veillisement coccinelle
 		VieillissementTousCocci(&potager);
-		// 9 : affichage potager en fonction de la réponse de l'utilisateur
+		// 9 : affichage potager en fonction de la réponse de l'utilisateur, et le nombre de tomates mures
 		printf( "\nEtat initial du potager : il y a %d pucerons et %d coccinelles. \n",potager.NbPuceronVie, potager.NbCoccinelleVie);
-		affichageSurDemande(affichage, &potager);
-		
+		affichageSurDemande(&affichage, &potager);
+		AfficheNbTomateMure( &potager );
 		
 		// 10 :incrémentation nombre de tour
 		t++;	
