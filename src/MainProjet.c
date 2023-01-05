@@ -66,7 +66,7 @@ int main(){
 		VieillissementTousPuceron(&potager);
 		// 7 : reproduction coccinelle
 		reproTousCocci(&potager);
-		TousCocciMange(&potager); // si ils arrivent sur une case avec coccinelle
+		TousCocciMange(&potager); // si une coccinelle arrive sur une case avec puceron
 		// 8 : veillisement coccinelle
 		VieillissementTousCocci(&potager);
 		// 9 : affichage potager en fonction de la réponse de l'utilisateur, et le nombre de tomates mures
