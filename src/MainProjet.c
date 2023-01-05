@@ -66,11 +66,11 @@ int main(){
 		VieillissementTousPuceron(&potager);
 		// 7 : reproduction coccinelle
 		reproTousCocci(&potager);
-		TousCocciMange(&potager); // si ils arrivent sur une case avec coccinelle
+		TousCocciMange(&potager); // si nouvelle coccinelle arive sur une case avec puceron
 		// 8 : veillisement coccinelle
 		VieillissementTousCocci(&potager);
 		// 9 : affichage potager en fonction de la réponse de l'utilisateur, et le nombre de tomates mures
-		printf( "\nEtat initial du potager : il y a %d pucerons et %d coccinelles. \n",potager.NbPuceronVie, potager.NbCoccinelleVie);
+		printf( "\nEtat du potager : il y a %d pucerons et %d coccinelles. \n",potager.NbPuceronVie, potager.NbCoccinelleVie);
 		affichageSurDemande(&affichage, &potager);
 		AfficheNbTomateMure( &potager );
 		
